@@ -1,0 +1,57 @@
+/* ===== Smart School Helper — Overlay Styles ===== */
+/* Injected alongside the content script. */
+
+/* --- Status Toast --- */
+.ssh-status {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 99999;
+  background: #1e293b;
+  color: #f1f5f9;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+  transition: opacity .3s, transform .3s;
+  pointer-events: none;
+}
+.ssh-status.hidden {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* --- Floating Action Button --- */
+.ssh-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99998;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, .4);
+  transition: transform .15s, box-shadow .15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ssh-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, .5);
+}
+.ssh-fab:active {
+  transform: scale(0.95);
+}
+
+/* Ensure our overlay doesn't clash with the site */
+#ssh-overlay * {
+  box-sizing: border-box;
+  line-height: 1.4;
+}

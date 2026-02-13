@@ -1,0 +1,2085 @@
+        <!DOCTYPE html>
+    <html lang="uk">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex">
+        <meta name="csrf-param" content="_csrf-backend">
+<meta name="csrf-token" content="6r2WPzozPTOObNKi7SFrFMfg6GKR9hYhoUoPfsNc0nrb1vwJa1FUR9w7h5qyRS0k_66HBMm4bnDZDV419GmQPA==">
+        <title>Заняття </title>
+        <link href="/assets/9852b0d4/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/8bf68612/css/activeform.min.css" rel="stylesheet">
+<link href="/assets/bf87b5a3/css/daterangepicker.min.css" rel="stylesheet">
+<link href="/assets/bf87b5a3/css/daterangepicker-kv.min.css" rel="stylesheet">
+<link href="/assets/acd75809/css/kv-widgets.min.css" rel="stylesheet">
+<link href="/assets/cdec546c/css/kv-grid.min.css" rel="stylesheet">
+<link href="/assets/cdec546c/css/kv-grid-expand.min.css" rel="stylesheet">
+<link href="/assets/f2679d92/css/bootstrap-dialog-bs3.min.css" rel="stylesheet">
+<link href="/assets/cdec546c/css/jquery.resizableColumns.min.css" rel="stylesheet">
+<link href="/assets/3d2a2d94/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+<link href="/assets/3d2a2d94/css/datepicker-kv.min.css" rel="stylesheet">
+<link href="/assets/dfec8d4e/css/select2.min.css" rel="stylesheet">
+<link href="/assets/3ff98f81/css/select2-addl.min.css" rel="stylesheet">
+<link href="/assets/3ff98f81/css/select2-krajee-bs3.min.css" rel="stylesheet">
+<link href="/assets/8eb39d5c/css/dependent-dropdown.min.css" rel="stylesheet">
+<link href="/assets/42c376da/css/typeahead.min.css" rel="stylesheet">
+<link href="/assets/42c376da/css/typeahead-kv.min.css" rel="stylesheet">
+<link href="/css/build/main.css" rel="stylesheet">
+<link href="/css/journal.css" rel="stylesheet">
+<link href="/css/additional.css" rel="stylesheet">
+<link href="/assets/7b16a568/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/430c64ee/css/AdminLTE.min.css" rel="stylesheet">
+<link href="/assets/430c64ee/css/skins/_all-skins.min.css" rel="stylesheet">
+<script src="/assets/bf87b5a3/js/moment.min.js"></script>
+<script src="/assets/bf87b5a3/js/locales/uk.js"></script>
+<script src="/assets/f2679d92/js/dialog.min.js"></script>
+<script>window.daterangepicker_86e0c135 = {"locale":{"format":"YYYY-MM-DD","applyLabel":"ОК","cancelLabel":"Скасувати","fromLabel":"З","toLabel":"По","weekLabel":"Т","customRangeLabel":"Свій діапазон","daysOfWeek":moment.weekdaysMin(),"monthNames":moment.monthsShort(),"firstDay":moment.localeData()._week.dow},"todayHighlight":true,"ranges":{"Наступний тиждень":[moment().add(1, 'weeks').startOf('isoWeek'),moment().add(1, 'weeks').endOf('isoWeek')],"Поточний тиждень":[moment().startOf('isoWeek'),moment().endOf('isoWeek')],"Минулий тиждень":[moment().subtract(1, 'weeks').startOf('isoWeek'),moment().subtract(1, 'weeks').endOf('isoWeek')]},"cancelButtonClasses":"btn-default","language":"uk","startDate":"2026-02-09","endDate":"2026-02-15","autoUpdateInput":false};
+
+var kvExpandRow_ea0d53b3 = {"gridId":"wm5","hiddenFromExport":true,"detailUrl":"/index.php?r=lesson%2Flesson-detail","onDetailLoaded":"","expandIcon":"<span class=\"glyphicon glyphicon-expand\"></span>","collapseIcon":"<span class=\"glyphicon glyphicon-collapse-down\"></span>","expandTitle":"Розгорнути","collapseTitle":"Згорнути","expandAllTitle":"Розгорнути все","collapseAllTitle":"Згорнути все","rowCssClass":"info","animationDuration":"slow","expandOneOnly":true,"enableRowClick":false,"enableCache":true,"rowClickExcludedTags":["A","BUTTON","INPUT"],"collapseAll":false,"expandAll":false,"extraData":[],"msgDetailLoading":"<small>Loading &hellip;</small>"};
+
+var krajeeDialogDefaults_0fbd61bd = {"alert":{"type":"type-info","title":"Інформація","buttonLabel":"<span class=\"glyphicon glyphicon-ok\"></span> Так"},"confirm":{"type":"type-warning","title":"Підтвердження","btnOKClass":"btn-warning","btnOKLabel":"<span class=\"glyphicon glyphicon-ok\"></span> Так","btnCancelLabel":"<span class=\"glyphicon glyphicon-ban-circle\"></span>  Ні"},"prompt":{"draggable":false,"title":"Інформація","buttons":[{"label":"Ні","icon":"glyphicon glyphicon-ban-circle","cssClass":"btn-default"},{"label":"Так","icon":"glyphicon glyphicon-ok","cssClass":"btn-primary"}],"closable":false},"dialog":{"draggable":true,"title":"Інформація","buttons":[{"label":"Ні","icon":"glyphicon glyphicon-ban-circle","cssClass":"btn-default"},{"label":"Так","icon":"glyphicon glyphicon-ok","cssClass":"btn-primary"}]}};
+var krajeeDialog_ead3f524 = {"id":"w3"};
+var krajeeDialog=new KrajeeDialog(true,krajeeDialog_ead3f524,krajeeDialogDefaults_0fbd61bd);
+window.kvDatepicker_06490258 = {"allowClear":true,"format":"yyyy-mm-dd","language":"uk"};
+
+window.s2options_3267a624 = {"themeCss":".select2-container--krajee-bs3","sizeCss":"","doReset":true,"doToggle":false,"doOrder":false};
+window.select2_7c9b4e86 = {"allowClear":true,"theme":"krajee-bs3","width":"100%","placeholder":"№ уроків","language":"uk"};
+
+window.s2options_669e5a8e = {"themeCss":".select2-container--krajee-bs3","sizeCss":"","doReset":true,"doToggle":true,"doOrder":false};
+window.select2_c1ae7478 = {"allowClear":true,"theme":"krajee-bs3","width":"100%","placeholder":"Групи","language":"uk"};
+
+window.select2_61e7e3e7 = {"allowClear":true,"theme":"krajee-bs3","width":"100%","placeholder":"Предмети","language":"uk"};
+
+window.select2_f7b2e0a7 = {"allowClear":true,"theme":"krajee-bs3","width":"100%","placeholder":"Вчителі","language":"uk"};
+
+window.select2_4a0aacdd = {"allowClear":true,"theme":"krajee-bs3","width":"100%","placeholder":"Кабінети","language":"uk"};
+
+window.kvDatepicker_b5fd2db2 = {"language":"uk","autoclose":true,"format":"yyyy-mm-dd","todayHighlight":true,"minDate":"0","maxDate":"+6m"};
+
+window.select2_ea31679c = {"theme":"krajee-bs3","width":"100%","language":"uk"};
+
+window.select2_0b89ef7d = {"placeholder":"Оберіть шаблон","theme":"krajee-bs3","width":"100%","language":"uk"};
+
+window.select2_2db6ce4f = {"placeholder":"Оберіть тип імпорту замін","theme":"krajee-bs3","width":"100%","minimumResultsForSearch":Infinity,"language":"uk"};
+
+window.select2_b4b53d3e = {"theme":"krajee-bs3","width":"100%","minimumResultsForSearch":Infinity,"language":"uk"};
+
+window.select2_bdd6053c = {"placeholder":"Групи","theme":"krajee-bs3","width":"100%","language":"uk"};
+
+window.kvDatepicker_27fac8fa = {"autoclose":true,"format":"dd.mm.yyyy","language":"uk"};
+
+window.select2_878cdf7d = {"placeholder":"","theme":"krajee-bs3","width":"100%","language":"uk"};
+
+window.depdrop_e987150a = {"depends":["lessonmassreplacement-classid"],"url":"\/index.php?r=lesson%2Fjournal-list-by-class"};
+
+window.select2_8f1b3329 = {"allowClear":true,"placeholder":"","theme":"krajee-bs3","width":"100%","language":"uk"};
+
+var kvTypData_ab3a377b = ["відпустка","додатково"];
+window.typeahead_7864e59a = {"highlight":true};
+
+window.select2_3911df10 = {"placeholder":"","theme":"krajee-bs3","width":"100%","minimumResultsForSearch":Infinity,"language":"uk"};
+</script>        <style>
+           .breadcrumb {margin-bottom: 10px !important;}
+           .info-box-icon {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+           }
+
+           @media screen and (max-width: 991px) {
+               .main-header .navbar-custom-menu a, .main-header .navbar-right a {
+                   background: #3c8cbc !important;
+               }
+               .main-header .logo {
+                   display: none;
+               }
+           }
+        </style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini ">
+        <div class="wrapper">
+
+        
+<header class="main-header">
+
+    <a class="logo" href="/index.php"><span class="logo-mini">SS</span><span class="logo-lg">Smart-School</span></a>
+    <nav class="navbar navbar-static-top" role="navigation">
+
+        <a href="#" id="hide-sidebar" class="sidebar-toggle" data-toggle="push-menu"
+           role="button">
+            <span class="sr-only">Меню</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                                    <li>
+                        <a data-toggle="tooltip" data-placement="bottom" title="Уроків&nbsp;сьогодні&nbsp;/&nbsp;на&nbsp;тиждень" href="/index.php?r=lesson%2Findex&LessonSearch%5BTEACHER_ID%5D=65&order_lesson=1">
+                            У: 0 / 11                        </a>
+                    </li>
+                                                                                    <li>
+                    <a href="/index.php?r=support%2Findex">
+                        <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                        <span class="label label-warning"></span>
+                    </a>
+                </li>
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-envelope-o"></i>
+                                                                            <span class="label"></span>
+                                            </a>
+                    <ul class="dropdown-menu">
+                                                    <li>
+                                <i>У вас немає нових повідомлень</i>
+                            </li>
+                        <!--                        -->                                                <li class="footer">
+                            <a href="/index.php?r=message%2Findex">Переглянути усі</a>                        </li>
+                    </ul>
+                </li>
+
+                
+                <!-- User Account: style can be found in dropdown.less -->
+
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <!--                        <img src="http://maybeday.com/assets/userpic-252f87b349fd39ae3f877f059b9a06d4.png" class="user-image" alt="User Image"/>-->
+                                                <span class="hidden-xs">
+                            Кузьо Андрій Тарасович                        </span>
+                        <span class="hidden-sm hidden-md hidden-lg">
+			      <i class="fa fa-user"></i>
+			  </span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                                                            <!--                            <img src="http://maybeday.com/assets/userpic-252f87b349fd39ae3f877f059b9a06d4.png" class="img-circle" alt="User Image"/>-->
+                                                        <p>
+                                Кузьо Андрій Тарасович                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <!--                        <li class="user-body">-->
+                        <!--                            <div class="col-xs-4 text-center">-->
+                        <!--                                <a href="--><!--">Предмети</a>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-xs-4 text-center">-->
+                        <!--                                <a href="--><!--">Класи</a>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-xs-4 text-center">-->
+                        <!--                                <a href="--><!--">Розклад</a>-->
+                        <!--                            </div>-->
+                        <!--                        </li>-->
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                                                    <a class="btn btn-primary btn-flat" href="/index.php?r=teacher%2Fview&amp;id=65">Профіль</a>                                                            </div>
+                            <div class="pull-right">
+                                <a class="btn btn-primary btn-flat" href="/index.php?r=site%2Flogout" data-method="post">Вийти</a>                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+        <aside class="main-sidebar">
+    <section class="sidebar">
+
+        
+        <ul class="sidebar-menu tree" data-widget="tree"><li><a href="/index.php?r=site%2Findex"><i class="fa fa-newspaper-o"></i>  <span>Новини</span></a></li>
+<li class="treeview"><a href="/index.php?r=worksheet%2Findex"><i class="fa fa-list-ul"></i>  <span>Опитування</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=worksheet%2Findex"><i class="fa fa-circle-o"></i>  <span>Опитування</span></a></li>
+<li><a href="/index.php?r=worksheet%2Findex&type=my"><i class="fa fa-circle-o"></i>  <span>Мої опитування</span></a></li>
+</ul>
+</li>
+<li class="treeview"><a href="/index.php?r=lesson%2Fklass-list"><i class="fa fa-calendar"></i>  <span>Розклад</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=lesson%2Fklass-list"><i class="fa fa-circle-o"></i>  <span>Розклад</span></a></li>
+<li><a href="/index.php?r=individual-lesson%2Findex"><i class="fa fa-circle-o"></i>  <span>Індивідуальні заняття</span></a></li>
+<li><a href="/index.php?r=college%2Fschedule-state-attestation%2Fstart"><i class="fa fa-circle-o"></i>  <span>Підсумкові атестації</span></a></li>
+</ul>
+</li>
+<li><a href="/index.php?r=report%2Fview-zhurnal-list-teacher"><i class="fa fa-book"></i>  <span>Журнали груп</span></a></li>
+<li class="treeview"><a href="javascript:void(0);"><i class="fa fa-book"></i>  <span>Інші журнали</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=individual-lesson-journal%2Findex"><i class="fa fa-circle-o"></i>  <span>Індивідуальні заняття</span></a></li>
+<li><a href="/index.php?r=club%2Fclub%2Flist"><i class="fa fa-circle-o"></i>  <span>Гуртки</span></a></li>
+<li><a href="/index.php?r=facultative%2Ffacultative%2Flist"><i class="fa fa-circle-o"></i>  <span>Факультативи</span></a></li>
+<li><span><span></span></span></li>
+<li><a href="/index.php?r=instruction%2Finstruction-registration%2Findex"><i class="fa fa-circle-o"></i>  <span>Реєстрації інструктажів</span></a></li>
+<li><span><span></span></span></li>
+<li><span><span></span></span></li>
+<li><span><span></span></span></li>
+<li><span><span></span></span></li>
+<li><span><span></span></span></li>
+<li><span><span></span></span></li>
+<li><a href="/index.php?r=psychology%2Fjournal%2Findex&type=0"><i class="fa fa-circle-o"></i>  <span>Журнал практичного психолога</span></a></li>
+<li><a href="/index.php?r=psychology%2Fjournal%2Findex&type=10"><i class="fa fa-circle-o"></i>  <span>Журнал соціального педагога</span></a></li>
+<li><a href="/index.php?r=psychology%2Fjournal%2Findex&type=20"><i class="fa fa-circle-o"></i>  <span>Журнал логопеда</span></a></li>
+<li><a href="/index.php?r=psychologyadvanced%2Fjournal%2Findex&type=0"><i class="fa fa-circle-o"></i>  <span>Журнал обліку роботи практичного психолога</span></a></li>
+<li><a href="/index.php?r=psychologyadvanced%2Fjournal%2Findex&type=10"><i class="fa fa-circle-o"></i>  <span>Журнал обліку роботи соціального педагога</span></a></li>
+<li><a href="/index.php?r=psychologyadvanced%2Fjournal%2Findex&type=20"><i class="fa fa-circle-o"></i>  <span>Журнал обліку роботи логопеда</span></a></li>
+<li><a href="/index.php?r=report%2Freplacements-journals-list"><i class="fa fa-circle-o"></i>  <span>Журнали за замінами</span></a></li>
+<li><a href="/index.php?r=consultation%2Fconsultation-group%2Findex"><i class="fa fa-circle-o"></i>  <span>Облік Консультацій</span></a></li>
+<li><a href="/index.php?r=inclusion%2Finclusion-new-journal%2Findex"><i class="fa fa-circle-o"></i>  <span>Корекційно-розвиткові заняття (new)</span></a></li>
+</ul>
+</li>
+<li><a href="/index.php?r=college%2Fcoursework-new%2Fstart-teacher"><i class="fa fa-book"></i>  <span>Керівництво КР/КП</span></a></li>
+<li><a href="/index.php?r=college%2Findustrial-practice%2Fstart-teacher"><i class="fa fa-book"></i>  <span>Виробнича практика</span></a></li>
+<li><a href="/index.php?r=dp%2Fdp%2Findex"><i class="fa fa-book"></i>  <span>Дипломні роботи / проєкти</span></a></li>
+<li class="treeview"><a href="/index.php?r=report%2Fview-zhurnal-list-teacher"><i class="fa fa-book"></i>  <span>Освітній процес</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=homework%2Fstart"><i class="fa fa-circle-o"></i>  <span>Домашні завдання</span></a></li>
+<li><a href="/index.php?r=report-card-alpha-numeric%2Fstart"><i class="fa fa-circle-o"></i>  <span>Табелі успішності</span></a></li>
+<li><span><span></span></span></li>
+<li><a href="/index.php?r=pr_obuch%2Findex"><i class="fa fa-circle-o"></i>  <span>Програма навчання</span></a></li>
+<li><a href="/index.php?r=teacher-education-plan%2Findex&teacher_id=65"><i class="fa fa-circle-o"></i>  <span>Мої навчальні плани</span></a></li>
+<li><a href="/index.php?r=teachers-education-plan%2Findex"><i class="fa fa-circle-o"></i>  <span>Навчальні плани, якими поділилися</span></a></li>
+<li><a href="/index.php?r=journal-comments%2Findex-teacher"><i class="fa fa-circle-o"></i>  <span>Зауваження до ведення журналів (0)</span></a></li>
+</ul>
+</li>
+<li class="treeview"><a href="javascript:void(0);"><i class="fa fa-indent"></i>  <span>Тестування</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=education-test%2Findex"><i class="fa fa-circle-o"></i>  <span>Тестування</span></a></li>
+<li><a href="/index.php?r=education-test%2Fsessions"><i class="fa fa-circle-o"></i>  <span>Результати тестувань</span></a></li>
+</ul>
+</li>
+<li><a href="/index.php?r=class-management-new%2Findex"><i class="fa fa-user-o"></i>  <span>Класне керівництво</span></a></li>
+<li><span><span></span></span></li>
+<li><a href="/index.php?r=kabinet%2Fteacher"><i class="fa fa-university"></i>  <span>Мої кабінети</span></a></li>
+<li><a href="/index.php?r=message%2Findex"><i class="fa fa-envelope"></i>  <span>Повідомлення</span></a></li>
+<li><a href="/index.php?r=messenger%2Fmain"><i class="fa fa-envelope"></i>  <span>Чати (beta)</span></a></li>
+<li class="treeview"><a href="/index.php?r=teacher-stat%2Fshow"><i class="fa fa-line-chart"></i>  <span>Статистика</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=class-management-new%2Findex&showIndex=1"><i class="fa fa-circle-o"></i>  <span>Класне керівництво (архів)</span></a></li>
+<li><a href="/index.php?r=teacher-stat%2Fshow"><i class="fa fa-circle-o"></i>  <span>Моя статистика</span></a></li>
+<li><a href="/index.php?r=statistics%2Fown-teacher-statistics2"><i class="fa fa-circle-o"></i>  <span>Статистика студентів</span></a></li>
+<li><a href="/index.php?r=attendance-new%2Findex-not-edit"><i class="fa fa-circle-o"></i>  <span>Відвідування занять</span></a></li>
+<li><a href="/index.php?r=report%2Fview-zhurnal-list"><i class="fa fa-circle-o"></i>  <span>Журнали з фільтрами</span></a></li>
+<li><a href="/index.php?r=total-marks-report%2Fstart"><i class="fa fa-circle-o"></i>  <span>Підсумкові оцінки</span></a></li>
+<li><a href="/index.php?r=result-achievement%2Fview&teacher_id=65&mode=teacher"><i class="fa fa-circle-o"></i>  <span>Результативність навчання</span></a></li>
+<li><a href="/index.php?r=mark-range-report%2Fteacher-predmet-list"><i class="fa fa-circle-o"></i>  <span>Результативність навчання (за предметами)</span></a></li>
+<li><a href="/index.php?r=result-achievement%2Fteacher-subjects-list"><i class="fa fa-circle-o"></i>  <span>Результативність навчання (за предметами - розширений)</span></a></li>
+<li><span><span></span></span></li>
+<li><span><span></span></span></li>
+<li><a href="/index.php?r=report%2Fjournal-filling-sum-teacher"><i class="fa fa-circle-o"></i>  <span>Рейтинг наповнення журналів</span></a></li>
+<li><a href="/index.php?r=report%2Findividuals-filling-sum"><i class="fa fa-circle-o"></i>  <span>Рейтинг наповнення індивідуальних занять</span></a></li>
+</ul>
+</li>
+<li><a href="/index.php?r=user-access%2Flist"><i class="fa fa-cog"></i>  <span>Додаткові можливості</span></a></li>
+<li class="treeview"><a href="/index.php?r=settings%2Findex"><i class="fa fa-cog"></i>  <span>Налаштування</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=settings%2Findex"><i class="fa fa-circle-o"></i>  <span>Обліковий запис</span></a></li>
+<li><a href="/index.php?r=settings%2Fmark-types"><i class="fa fa-circle-o"></i>  <span>Типи оцінок</span></a></li>
+</ul>
+</li>
+<li><a href="/index.php?r=site%2Fmobile-app"><i class="fa fa-mobile"></i>  <span>Мобільні додатки</span></a></li>
+<li class="treeview"><a href="/index.php?r=site%2Fcontact"><i class="fa fa-question-circle-o"></i>  <span>Технічна підтримка</span> <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+<ul class='treeview-menu' >
+<li><a href="/index.php?r=support%2Findex"><i class="fa fa-circle-o"></i>  <span>Звернення до технічної підтримки</span></a></li>
+<li><a href="/index.php?r=logs-pages-load%2Fme"><i class="fa fa-circle-o"></i>  <span>Безпека</span></a></li>
+<li><a href="https://smart-school.com.ua/information_for_teacher/" target="_blank"><i class="fa fa-circle-o"></i>  <span>Довідка з користування</span></a></li>
+</ul>
+</li></ul>
+    </section>
+
+</aside>
+
+        
+<div class="content-wrapper">
+    <section class="hidden-print">
+        <ul class="breadcrumb"><li><a href="/index.php">Головна</a></li>
+<li><a href="/index.php?r=lesson%2Fklass-list">Розклад</a></li>
+<li class="active">Заняття </li>
+</ul>    </section>
+    <section class="content-header" style="padding-top: 0 !important;">
+                    <h1>
+                Заняття             </h1>
+        
+    </section>
+
+    <section class="row content">
+                
+    <style>
+        .select2-selection__rendered {
+            margin-top: unset !important;
+        }
+    </style>
+
+    <div class="lesson-index">
+        
+        
+        <form id="w0" class="form-vertical kv-form-bs3" action="/index.php" method="get" role="form">
+<input type="hidden" name="r" value="lesson/index">                <div class="drp-container form-group highlight-addon field-lessonsearch-date_range">
+
+
+<div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span><input type="text" id="lessonsearch-date_range" class="form-control" name="LessonSearch[date_range]" value="2026-02-09 - 2026-02-15" data-krajee-daterangepicker="daterangepicker_86e0c135"><input type="hidden" id="lessonsearch-date_range-start" name="LessonSearch[start_date]" value="2026-02-09"><input type="hidden" id="lessonsearch-date_range-end" name="LessonSearch[end_date]" value="2026-02-15"></div>
+
+<div class="help-block help-block-error"></div>
+
+</div>        </form>
+        <div>
+                                        <a id="lastWeek" class="btn btn-default"
+                   href="/index.php?r=lesson%2Findex&lesson_date=2026-02-02&LessonSearch%5BTEACHER_ID%5D=65&order_lesson=1 "><i
+                            class="glyphicon glyphicon-chevron-left"></i></a>
+                <a id="toDay" class="btn btn-default"
+                   href="/index.php?r=lesson%2Findex&lesson_date=2026-02-13&LessonSearch%5BTEACHER_ID%5D=65&order_lesson=1 ">Поточний тиждень</a>
+                <a id="nextWeek" class="btn btn-default"
+                   href="/index.php?r=lesson%2Findex&lesson_date=2026-02-16&LessonSearch%5BTEACHER_ID%5D=65&order_lesson=1 "><i
+                            class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+        <br>
+
+        <div id="wm5" class="is-bs3 kv-grid-bs3 kv-grid-panel hide-resize" data-krajee-grid="kvGridInit_913ae242" data-krajee-ps="ps_wm5_container"><div class="panel panel-primary"><div class="panel-heading panel-primary">    <div class="pull-right"><div class="summary">Показані <b>1-11</b> із <b>11</b> записів.</div></div>
+    <h3 class="panel-title">Розклад уроків</h3>
+    <div class="clearfix"></div></div>
+<div class="kv-panel-before">    <div class="btn-toolbar kv-grid-toolbar toolbar-container pull-right"><div class="btn-group"></div>
+<div class="btn-group"><a id="wm5-togdata-page" class="btn btn-default" href="/index.php?r=lesson%2Findex&amp;LessonSearch%5BTEACHER_ID%5D=65&amp;order_lesson=1&amp;_tog8c4343a2=all" title="Показати всі записи"><i class='glyphicon glyphicon-resize-full'></i> Все</a></div>
+<div class="btn-group btn-group">
+<button id="w1" class="btn btn-default btn dropdown-toggle btn" title="Експорт" data-toggle="dropdown"><i class='glyphicon glyphicon-export'></i>  <span class="caret"></span></button>
+
+<ul id="w2" class="dropdown-menu dropdown-menu-right dropdown-menu"><li role="presentation" class="dropdown-header">Експорт даних з цієї сторінки</li>
+<li title="Hyper Text Markup Language"><a class="export-html" href="#" data-mime="text/html" data-hash="d9dc5e648d8544ebf692b280ca5bede40e48c412cb3661823d0682b096f3a79bgridviewrozklad-exporttext/htmlutf-811{&quot;cssFile&quot;:&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css&quot;}" data-hash-export-config="1" data-css-styles='{".kv-group-even":{"background-color":"#f0f1ff"},".kv-group-odd":{"background-color":"#f9fcff"},".kv-grouped-row":{"background-color":"#fff0f5","font-size":"1.3em","padding":"10px"},".kv-table-caption":{"border":"1px solid #ddd","border-bottom":"none","font-size":"1.5em","padding":"8px"},".kv-table-footer":{"border-top":"4px double #ddd","font-weight":"bold"},".kv-page-summary td":{"background-color":"#ffeeba","border-top":"4px double #ddd","font-weight":"bold"},".kv-align-center":{"text-align":"center"},".kv-align-left":{"text-align":"left"},".kv-align-right":{"text-align":"right"},".kv-align-top":{"vertical-align":"top"},".kv-align-bottom":{"vertical-align":"bottom"},".kv-align-middle":{"vertical-align":"middle"},".kv-editable-link":{"color":"#428bca","text-decoration":"none","background":"none","border":"none","border-bottom":"1px dashed","margin":"0","padding":"2px 1px"}}' tabindex="-1"><i class="text-info floppy-saved"></i> HTML</a></li>
+<li title="Microsoft Excel 95+"><a class="export-xls" href="#" data-mime="application/vnd.ms-excel" data-hash="c11ab0ff82246c8e7a67c6eb42bd3da42855834fed4026e7fde5500f705e9bccgridviewrozklad-exportapplication/vnd.ms-excelutf-811{&quot;worksheet&quot;:&quot;ExportWorksheet&quot;,&quot;cssFile&quot;:&quot;&quot;}" data-hash-export-config="1" data-css-styles='{".kv-group-even":{"background-color":"#f0f1ff"},".kv-group-odd":{"background-color":"#f9fcff"},".kv-grouped-row":{"background-color":"#fff0f5","font-size":"1.3em","padding":"10px"},".kv-table-caption":{"border":"1px solid #ddd","border-bottom":"none","font-size":"1.5em","padding":"8px"},".kv-table-footer":{"border-top":"4px double #ddd","font-weight":"bold"},".kv-page-summary td":{"background-color":"#ffeeba","border-top":"4px double #ddd","font-weight":"bold"},".kv-align-center":{"text-align":"center"},".kv-align-left":{"text-align":"left"},".kv-align-right":{"text-align":"right"},".kv-align-top":{"vertical-align":"top"},".kv-align-bottom":{"vertical-align":"bottom"},".kv-align-middle":{"vertical-align":"middle"},".kv-editable-link":{"color":"#428bca","text-decoration":"none","background":"none","border":"none","border-bottom":"1px dashed","margin":"0","padding":"2px 1px"}}' tabindex="-1"><i class="text-success floppy-remove"></i> Excel</a></li>
+<li title="Portable Document Format"><a class="export-pdf" href="#" data-mime="application/pdf" data-hash="9eaded7037905fc09dd1aa9ddc1ac2b3748f10eaae9d06cac7752f7d548ccbcdgridviewrozklad-exportapplication/pdfutf-811{&quot;mode&quot;:&quot;UTF-8&quot;,&quot;format&quot;:&quot;A4&quot;,&quot;destination&quot;:&quot;D&quot;,&quot;marginTop&quot;:20,&quot;marginBottom&quot;:20,&quot;cssInline&quot;:&quot;.kv-wrap{padding:20px;}.kv-align-center{text-align:center;}.kv-align-left{text-align:left;}.kv-align-right{text-align:right;}.kv-align-top{vertical-align:top!important;}.kv-align-bottom{vertical-align:bottom!important;}.kv-align-middle{vertical-align:middle!important;}.kv-page-summary{border-top:4px double #ddd;font-weight: bold;}.kv-table-footer{border-top:4px double #ddd;font-weight: bold;}.kv-table-caption{font-size:1.5em;padding:8px;border:1px solid #ddd;border-bottom:none;}&quot;,&quot;methods&quot;:{&quot;SetHeader&quot;:[{&quot;odd&quot;:{&quot;L&quot;:{&quot;content&quot;:&quot;Розклад уроків&quot;,&quot;font-size&quot;:8,&quot;color&quot;:&quot;#333333&quot;},&quot;C&quot;:{&quot;content&quot;:&quot;За період з  09-02-2026  по  15-02-2026&quot;,&quot;font-size&quot;:8,&quot;color&quot;:&quot;#333333&quot;},&quot;R&quot;:{&quot;content&quot;:&quot;Згенеровано: 13-02-2026 22:08&quot;,&quot;font-size&quot;:8,&quot;color&quot;:&quot;#333333&quot;}},&quot;even&quot;:{&quot;L&quot;:{&quot;content&quot;:&quot;Розклад уроків&quot;,&quot;font-size&quot;:8,&quot;color&quot;:&quot;#333333&quot;},&quot;C&quot;:{&quot;content&quot;:&quot;За період з  09-02-2026  по  15-02-2026&quot;,&quot;font-size&quot;:8,&quot;color&quot;:&quot;#333333&quot;},&quot;R&quot;:{&quot;content&quot;:&quot;Згенеровано: 13-02-2026 22:08&quot;,&quot;font-size&quot;:8,&quot;color&quot;:&quot;#333333&quot;}}}],&quot;SetFooter&quot;:[{&quot;odd&quot;:{&quot;L&quot;:{&quot;content&quot;:&quot;© &quot;,&quot;font-size&quot;:8,&quot;font-style&quot;:&quot;B&quot;,&quot;color&quot;:&quot;#999999&quot;},&quot;R&quot;:{&quot;content&quot;:&quot;[ {PAGENO}/{nb} ]&quot;,&quot;font-size&quot;:10,&quot;font-style&quot;:&quot;B&quot;,&quot;font-family&quot;:&quot;serif&quot;,&quot;color&quot;:&quot;#333333&quot;},&quot;line&quot;:true},&quot;even&quot;:{&quot;L&quot;:{&quot;content&quot;:&quot;© &quot;,&quot;font-size&quot;:8,&quot;font-style&quot;:&quot;B&quot;,&quot;color&quot;:&quot;#999999&quot;},&quot;R&quot;:{&quot;content&quot;:&quot;[ {PAGENO}/{nb} ]&quot;,&quot;font-size&quot;:10,&quot;font-style&quot;:&quot;B&quot;,&quot;font-family&quot;:&quot;serif&quot;,&quot;color&quot;:&quot;#333333&quot;},&quot;line&quot;:true}}]},&quot;options&quot;:{&quot;title&quot;:&quot;Розклад уроків&quot;,&quot;subject&quot;:&quot;PDF export generated by kartik-v/yii2-grid extension&quot;,&quot;keywords&quot;:&quot;krajee, grid, export, yii2-grid, pdf&quot;},&quot;contentBefore&quot;:&quot;&quot;,&quot;contentAfter&quot;:&quot;&quot;}" data-hash-export-config="1" data-css-styles='{".kv-group-even":{"background-color":"#f0f1ff"},".kv-group-odd":{"background-color":"#f9fcff"},".kv-grouped-row":{"background-color":"#fff0f5","font-size":"1.3em","padding":"10px"},".kv-table-caption":{"border":"1px solid #ddd","border-bottom":"none","font-size":"1.5em","padding":"8px"},".kv-table-footer":{"border-top":"4px double #ddd","font-weight":"bold"},".kv-page-summary td":{"background-color":"#ffeeba","border-top":"4px double #ddd","font-weight":"bold"},".kv-align-center":{"text-align":"center"},".kv-align-left":{"text-align":"left"},".kv-align-right":{"text-align":"right"},".kv-align-top":{"vertical-align":"top"},".kv-align-bottom":{"vertical-align":"bottom"},".kv-align-middle":{"vertical-align":"middle"},".kv-editable-link":{"color":"#428bca","text-decoration":"none","background":"none","border":"none","border-bottom":"1px dashed","margin":"0","padding":"2px 1px"}}' tabindex="-1"><i class="text-danger floppy-disk"></i> PDF</a></li></ul>
+</div></div>
+     <a class="btn btn-primary" href="/index.php?r=lesson%2Fversion-for-print-classrooms&amp;date_week=2026-02-09" target="_blank">Роздрукувати форму по кабінетах</a>
+    <div class="clearfix"></div></div>
+<div id="wm5-container" class="table-responsive kv-grid-container" style="overflow: auto"><table class="kv-grid-table table table-hover table-bordered table-striped kv-table-wrap"><colgroup><col>
+<col>
+<col>
+<col>
+<col>
+<col class="skip-export">
+<col class="skip-export"></colgroup>
+<thead class="kv-table-header wm5">
+<tr class="kartik-sheet-style"><th class="kv-align-center kv-align-middle kv-grid-group-header wm5" style="width:350px;" data-group-key="d28fc5f3" data-col-seq="0"><a href="/index.php?r=lesson%2Findex&amp;LessonSearch%5BTEACHER_ID%5D=65&amp;order_lesson=1&amp;sort=LESSON_DATE" data-sort="LESSON_DATE">Дата заняття</a></th><th class="kv-align-center kv-align-middle kv-grid-group-header wm5" data-group-key="eb6d59e8" data-col-seq="1"><a href="/index.php?r=lesson%2Findex&amp;LessonSearch%5BTEACHER_ID%5D=65&amp;order_lesson=1&amp;sort=LESSON_NUM" data-sort="LESSON_NUM">Номер заняття</a></th><th class="kv-align-center kv-align-middle" style="width:280px;" data-col-seq="2"><a href="/index.php?r=lesson%2Findex&amp;LessonSearch%5BTEACHER_ID%5D=65&amp;order_lesson=1&amp;sort=KLASS_ID" data-sort="KLASS_ID">Група</a></th><th class="kv-align-middle" style="width:180px;" data-col-seq="3"><a href="/index.php?r=lesson%2Findex&amp;LessonSearch%5BTEACHER_ID%5D=65&amp;order_lesson=1&amp;sort=PREDMET_ID" data-sort="PREDMET_ID">Предмет</a></th><th class="kv-align-middle" style="width:180px;" data-col-seq="4"><a href="/index.php?r=lesson%2Findex&amp;LessonSearch%5BTEACHER_ID%5D=65&amp;order_lesson=1&amp;sort=TEACHER_ID" data-sort="TEACHER_ID">Вчитель </a></th><th class="kv-align-middle" style="width:180px;" data-col-seq="5"><a href="/index.php?r=lesson%2Findex&amp;LessonSearch%5BTEACHER_ID%5D=65&amp;order_lesson=1&amp;sort=KABINET_ID" data-sort="KABINET_ID">Кабінет</a></th><th class="kv-align-center kv-align-middle skip-export kv-merged-header" style="width:100px;" rowspan="2" data-col-seq="actionc">Дії</th><th class="kartik-sheet-style kv-align-center kv-align-middle skip-export kv-expand-header-cell kv-batch-toggle wm5_fa687165 kv-merged-header" title="Розгорнути все" style="width:50px;" rowspan="2" data-col-seq="6"><div class='kv-expand-header-icon kv-state-expanded'><span class="glyphicon glyphicon-expand"></span></div></th></tr><tr id="wm5-filters" class="kartik-sheet-style filters skip-export"><td class="kv-grid-group-filter wm5" data-group-key="d28fc5f3" data-col-seq="0"><div id="lessonsearch-lesson_date-kvdate" class="input-group date"><span class="input-group-addon kv-date-picker" title="Обрати дату"><i class="glyphicon glyphicon-calendar kv-dp-icon"></i></span><span class="input-group-addon kv-date-remove" title="Очистити поле"><i class="glyphicon glyphicon-remove kv-dp-icon"></i></span><input type="text" id="lessonsearch-lesson_date" class="form-control krajee-datepicker" name="LessonSearch[LESSON_DATE]" placeholder="Дата" data-datepicker-source="lessonsearch-lesson_date-kvdate" data-datepicker-type="2" data-krajee-kvDatepicker="kvDatepicker_06490258"></div></td><td class="kv-grid-group-filter wm5" data-group-key="eb6d59e8" data-col-seq="1"><div class="kv-plugin-loading loading-lessonsearch-lesson_num">&nbsp;</div><select id="lessonsearch-lesson_num" class="form-control" name="LessonSearch[LESSON_NUM]" data-s2-options="s2options_3267a624" data-krajee-select2="select2_7c9b4e86" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="">№ уроків</option>
+<option value="1">1 урок</option>
+<option value="2">2 урок</option>
+<option value="3">3 урок</option>
+<option value="4">4 урок</option>
+<option value="5">5 урок</option>
+<option value="6">6 урок</option>
+<option value="7">7 урок</option>
+<option value="8">8 урок</option>
+<option value="9">9 урок</option>
+<option value="10">10 урок</option>
+</select></td><td data-col-seq="2"><span id="parent-s2-togall-lessonsearch-klass_id" style="display:none"><span id="s2-togall-lessonsearch-klass_id" class="s2-togall-button s2-togall-select"><span class="s2-select-label"><i class="glyphicon glyphicon-unchecked"></i>Обрати всі</span><span class="s2-unselect-label"><i class="glyphicon glyphicon-check"></i>Очистити всі</span></span></span><div class="kv-plugin-loading loading-lessonsearch-klass_id">&nbsp;</div><input type="hidden" name="LessonSearch[KLASS_ID]" value=""><select id="lessonsearch-klass_id" class="form-control" name="LessonSearch[KLASS_ID][]" multiple size="4" data-s2-options="s2options_669e5a8e" data-krajee-select2="select2_c1ae7478" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="90">11т (2025)</option>
+<option value="71">12к (2025)</option>
+<option value="91">13п (2025)</option>
+<option value="92">14п (2025)</option>
+<option value="93">15п (2025)</option>
+<option value="79">16кб (2025)</option>
+<option value="70">17гр (2025)</option>
+<option value="64">18м (2025)</option>
+<option value="74">21т (2025)</option>
+<option value="69">22к (2025)</option>
+<option value="87">23п (2025)</option>
+<option value="88">24п (2025)</option>
+<option value="78">25е (2025)</option>
+<option value="89">26п (2025)</option>
+<option value="67">27гр (2025)</option>
+<option value="95">28т (2025)</option>
+<option value="94">29к (2025)</option>
+<option value="65">310гр (2025)</option>
+<option value="77">311е (2025)</option>
+<option value="73">31т (2025)</option>
+<option value="68">32к (2025)</option>
+<option value="83">33п (2025)</option>
+<option value="84">34п (2025)</option>
+<option value="76">35е (2025)</option>
+<option value="85">36п (2025)</option>
+<option value="66">37гр (2025)</option>
+<option value="72">38т (2025)</option>
+<option value="86">39п (2025)</option>
+<option value="80">43п (2025)</option>
+<option value="81">44п (2025)</option>
+<option value="82">46п (2025)</option>
+</select></td><td data-col-seq="3"><div class="kv-plugin-loading loading-lessonsearch-predmet_id">&nbsp;</div><select id="lessonsearch-predmet_id" class="form-control" name="LessonSearch[PREDMET_ID]" data-s2-options="s2options_3267a624" data-krajee-select2="select2_61e7e3e7" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="">Предмети</option>
+<option value="317">Web-дизайн</option>
+<option value="393">Web-дизайн - лабораторні заняття</option>
+<option value="105">Web-програмування</option>
+<option value="114">Алгоритми та структури даних</option>
+<option value="176">Алгоритми та структури даних - лабораторні заняття</option>
+<option value="392">Алгоритми та структури даних - практичні заняття</option>
+<option value="308">Архітектура комп&#039;ютерів</option>
+<option value="389">Архітектура комп&#039;ютерів - практичні заняття</option>
+<option value="123">Автоматизовані системи електронного документообігу</option>
+<option value="187">Автоматизовані системи електронного документообігу - лабораторні заняття</option>
+<option value="327">Атестація здобувачів фахової передвищої освіти</option>
+<option value="152">Аудит</option>
+<option value="115">Бази даних</option>
+<option value="435">Бази даних - практичні заняття</option>
+<option value="182">Бази даних- лабораторні заняття</option>
+<option value="143">Безпека життєдіяльності і охорона праці</option>
+<option value="106">Безпека життєдіяльності, охорона праці та цивільний захист</option>
+<option value="103">Біологія та екологія</option>
+<option value="144">Біржова діяльність</option>
+<option value="341">Бухгалтерський облік в туризмі та готелях</option>
+<option value="321">Бухгалтерський облік</option>
+<option value="124">Веб-програмування</option>
+<option value="179">Веб-програмування - практичні заняття</option>
+<option value="309">Веб-технології</option>
+<option value="391">Веб-технології - практичні заняття</option>
+<option value="188">Вебпрограмування - лабораторні заняття</option>
+<option value="418">Виробнича практика</option>
+<option value="134">Вища математика</option>
+<option value="58">Всесвітня історія</option>
+<option value="300">Географія</option>
+<option value="168">Географія туризму</option>
+<option value="330">Господарське право</option>
+<option value="301">Громадянська освіта</option>
+<option value="107">Групова динаміка і комунікації</option>
+<option value="116">Дискретна математика</option>
+<option value="117">Диференціальні рівняння</option>
+<option value="125">Ділова іноземна мова</option>
+<option value="169">Друга іноземна мова (за професійним спрямуванням)</option>
+<option value="161">Друга іноземна мова</option>
+<option value="133">Екологія</option>
+<option value="324">Економіка і організація інноваційної діяльності</option>
+<option value="126">Економіка ІТ-бізнесу</option>
+<option value="337">Економіка підприємства сфери обслуговування</option>
+<option value="315">Економіка програмного забезпечення</option>
+<option value="135">Економіка підприємства</option>
+<option value="311">Економічна теорія</option>
+<option value="153">Економічний аналіз</option>
+<option value="265">Економічний практикум</option>
+<option value="145">Електронна комерція</option>
+<option value="403">Електронна комерція - практичні роботи</option>
+<option value="157">Естетичне оформлення готелів</option>
+<option value="68">Зарубіжна література</option>
+<option value="408">Захист курсових проєктів (Бази даних)</option>
+<option value="416">Захист курсових проєктів (Об&#039;єктно-орієнтоване програмування)</option>
+<option value="414">Захист курсових робіт (Економіка підприємства)</option>
+<option value="413">Захист курсових робіт (Комерційна діяльність)</option>
+<option value="415">Захист курсових робіт (Організація і технологія обслуговування в готелях)</option>
+<option value="411">Захист курсових робіт (Планування та організація діяльності підприємства)</option>
+<option value="412">Захист курсових робіт (Туристичне країнознавство)</option>
+<option value="409">Захист курсових робіт (Технологія та організація туристичного обслуговування)</option>
+<option value="410">Захист курсових робіт (Туристичне краєзнавство)</option>
+<option value="62">Захист України</option>
+<option value="425">Захист України (Домедична підготовка)</option>
+<option value="131">Інструментальні засоби візуального програмування</option>
+<option value="191">Інструментальні засоби візуального програмування - лабораторні заняття</option>
+<option value="97">Іноземна мова</option>
+<option value="113">Іноземна мова (за професійним спрямуванням)</option>
+<option value="24">Інформатика</option>
+<option value="360">Інформатика і комп&#039;ютерна техніка</option>
+<option value="177">Інформатика - практичне заняття</option>
+<option value="132">Інформатика: Інформатика і КТ</option>
+<option value="286">Інформатика. Інформатика і КТ - практичне заняття</option>
+<option value="320">Інформатика. Інформатика</option>
+<option value="436">ІСіТ в туризмі - практичні заняття</option>
+<option value="331">Інфраструктура товарного ринку</option>
+<option value="333">Інформаційні системи і технології в комерційній діяльності</option>
+<option value="404">Інформаційні системи і технології в комерційній діяльності - практичні роботи</option>
+<option value="175">Інформаційні системи і технології  в туризмі</option>
+<option value="405">Інформаційні системи і технології в туризмі  та готелях - практичні роботи</option>
+<option value="343">Інформаційні системи і технології в туризмі та готелях</option>
+<option value="156">Інформаційні системи і технології на підприємстві</option>
+<option value="193">Інформаційні системи і технології на підприємстві - практичні заняття</option>
+<option value="25">Історія України</option>
+<option value="294">Кваліфікаційний іспит</option>
+<option value="421">Кейтеринг</option>
+<option value="295">Кваліфікаційний іспит  з іноземної мови (за професійним спрямуванням)</option>
+<option value="146">Комерційна діяльність</option>
+<option value="147">Комерційне товарознавство</option>
+<option value="326">Комп&#039;ютерна бухгалтерія</option>
+<option value="402">Комп&#039;ютерна бухгалтерія - практичні роботи</option>
+<option value="302">Комп&#039;ютерна графіка</option>
+<option value="388">Комп&#039;ютерна графіка - практичні заняття</option>
+<option value="328">Комунікаційна діяльність</option>
+<option value="318">Конструювання програмного забезпечення</option>
+<option value="395">Конструювання ПЗ - лабораторні заняття</option>
+<option value="417">Консультації до кваліфікаційного іспиту</option>
+<option value="369">Консультації з  організації і технології обслуговування в готелях</option>
+<option value="351">Консультації з web-дизайну</option>
+<option value="214">Консультації з автоматизованих систем електронного документообігу</option>
+<option value="205">Консультації з алгоритмів та структур даних </option>
+<option value="348">Консультації з архітектури комп&#039;ютерів</option>
+<option value="240">Консультації з аудиту</option>
+<option value="206">Консультації з баз даних</option>
+<option value="232">Консультації з безпеки життєдіяльності і охорони праці</option>
+<option value="197">Консультації з безпеки життєдіяльності, охорони праці та цивільного захисту</option>
+<option value="233">Консультації з біржової діяльності</option>
+<option value="377">Консультації з бухгалтерського обліку</option>
+<option value="376">Консультації з бухгалтерського обліку в туризмі та готелях</option>
+<option value="196">Консультації з веб-програмування </option>
+<option value="349">Консультації з веб-технологій</option>
+<option value="223">Консультації з вищої математики</option>
+<option value="257">Консультації з географії туризму</option>
+<option value="385">Консультації з господарського права</option>
+<option value="198">Консультації з групової динаміки і комунікацій</option>
+<option value="207">Консультації з дискретної математики</option>
+<option value="208">Консультації з диференційних рівнянь</option>
+<option value="215">Консультації з ділової іноземної мови</option>
+<option value="249">Консультації з другої іноземної мови</option>
+<option value="375">Консультації з другої іноземної мови (за професійним спрямуванням)</option>
+<option value="222">Консультації з екології</option>
+<option value="216">Консультації з економіки ІТ-бізнесу</option>
+<option value="224">Консультації з економіки підприємства</option>
+<option value="368">Консультації з економіки підприємства сфери обслуговування</option>
+<option value="356">Консультації з економіки програмного забезпечення</option>
+<option value="399">Консультації з економіки та організації інноваційної діяльності</option>
+<option value="241">Консультації з економічного аналізу</option>
+<option value="352">Консультації з економічної теорії</option>
+<option value="234">Консультації з електронної комерції</option>
+<option value="245">Консультації з естетичного оформлення готелів</option>
+<option value="203">Консультації з іноземної мови (за професійним спрямуванням)</option>
+<option value="221">Консультації з інструментальних засобів візуального програмування</option>
+<option value="361">Консультації з інформатики і КТ</option>
+<option value="263">Консультації з інформаційних систем і технологій в туризмі</option>
+<option value="365">Консультації з інформаційних систем і технологій в туризмі та готелях</option>
+<option value="244">Консультації з інформаційних систем і технологій на підприємстві</option>
+<option value="364">Консультації з інформаційних системи і технологій в комерційній діяльності</option>
+<option value="387">Консультації з інфраструктури товарного ринку</option>
+<option value="256">Консультації з історії України</option>
+<option value="430">Консультації з кейтерингу</option>
+<option value="236">Консультації з комерційного товарознавства</option>
+<option value="235">Консультації з комерційної діяльності</option>
+<option value="401">Консультації з комп&#039;ютерної бухгалтерії</option>
+<option value="304">Консультації з комп&#039;ютерної графіки</option>
+<option value="370">Консультації з комунікаційної діяльності</option>
+<option value="357">Консультації з конструювання програмного забезпечення</option>
+<option value="225">Консультації з культурології. Основи філософських знань</option>
+<option value="199">Консультації з лінійної алгебри та аналітичної геометрії</option>
+<option value="226">Консультації з логістики</option>
+<option value="227">Консультації з маркетингу</option>
+<option value="350">Консультації з математичного аналізу</option>
+<option value="239">Консультації з менеджменту</option>
+<option value="354">Консультації з мови програмування Java та проєктного практикуму</option>
+<option value="209">Консультації з об&#039;єктно-орієнтованого програмування</option>
+<option value="194">Консультації з операційних систем</option>
+<option value="427">Консультації з організації анімаційних послуг в туризмі та готелях</option>
+<option value="433">Консультації з організації обслуговування та управління якістю продукції та послуг сфери обслуговування</option>
+<option value="247">Консультації з організації анімаційних послуг в туризмі</option>
+<option value="238">Консультації з організації бізнесу</option>
+<option value="246">Консультації з організації бізнесу сфери обслуговування</option>
+<option value="379">Консультації з організації готельного обслуговування</option>
+<option value="260">Консультації з організації екскурсійного обслуговування</option>
+<option value="371">Консультації з організації і технології обслуговування в готелях</option>
+<option value="373">Консультації з організації і технології обслуговування в закладах ресторанного господарства</option>
+<option value="217">Консультації з організації комп&#039;ютерних мереж</option>
+<option value="250">Консультації з організації ресторанного обслуговування</option>
+<option value="228">Консультації з організації торгівлі</option>
+<option value="374">Консультації з основ гостинності та сервісології</option>
+<option value="347">Консультації з основ екології</option>
+<option value="429">Консультації з основ інформаційної та кібернетичної безпеки</option>
+<option value="218">Консультації з основ менеджменту та маркетингу</option>
+<option value="381">Консультації з основ правознавства</option>
+<option value="210">Консультації з основ програмної інженерії</option>
+<option value="200">Консультації з основ програмування і алгоритмічної мови</option>
+<option value="201">Консультації з основ філософських знань та культурології</option>
+<option value="202">Консультації з офісного програмного забезпечення</option>
+<option value="386">Консультації з підприємницької діяльності</option>
+<option value="242">Консультації з планування та організації діяльності підприємства</option>
+<option value="229">Консультації з податкової системи</option>
+<option value="251">Консультації з правового регулювання тур. Діяльності</option>
+<option value="261">Консультації з правового регулювання туристичної діяльності</option>
+<option value="372">Консультації з правового регулювання у сфері обслуговування</option>
+<option value="363">Консультації з правознавства</option>
+<option value="424">Консультації з прикладної статистики</option>
+<option value="219">Консультації з програмування для мобільних додатків</option>
+<option value="220">Консультації з проєктного практикуму</option>
+<option value="262">Консультації з професійного етикету</option>
+<option value="255">Консультації з психології</option>
+<option value="305">Консультації з психології, психічного здоров&#039;я</option>
+<option value="293">Консультації з регіональної економіки</option>
+<option value="243">Консультації з рекламної діяльності</option>
+<option value="397">Консультації з рекламної діяльності у сфері готельно-ресторанних послуг і туризму</option>
+<option value="252">Консультації з рекреалогії та рекреаційної географії</option>
+<option value="366">Консультації з ринкових досліджень</option>
+<option value="195">Консультації з соціології</option>
+<option value="378">Консультації з статистики</option>
+<option value="367">Консультації з страхування</option>
+<option value="384">Консультації з страхування в туризмі</option>
+<option value="431">Консультації з страхування підприємств сфери обслуговування</option>
+<option value="353">Консультації з теорії йовірності і математичної статистики</option>
+<option value="358">Консультації з тестування програмного забезпечення</option>
+<option value="259">Консультації з технології і організації туристичного обслуговування</option>
+<option value="253">Консультації з технології та організації туристичного обслуговування</option>
+<option value="211">Консультації з технологій 3D моделювання та друкування</option>
+<option value="248">Консультації з туристичних ресурсів України</option>
+<option value="254">Консультації з туристичного краєзнавства</option>
+<option value="383">Консультації з туристичного країнознавства</option>
+<option value="212">Консультації з української мови за професійним спрямуванням</option>
+<option value="398">Консультації з управління витратами</option>
+<option value="400">Консультації з управління персоналом</option>
+<option value="432">Консультації з устаткування закладів готельно-ресторанного господарства</option>
+<option value="213">Консультації з фізики (електрика)</option>
+<option value="380">Консультації з фізичного виховання (спортивний туризм)</option>
+<option value="230">Консультації з фінансів підприємств</option>
+<option value="237">Консультації з фінансового обліку</option>
+<option value="355">Консультації з хмарних технологій</option>
+<option value="231">Консультації з ціноутворення</option>
+<option value="258">Консультації зі спеціалізованого туризму</option>
+<option value="136">Культурологія. Основи філософських знань</option>
+<option value="108">Лінійна алгебра та аналітична геометрія</option>
+<option value="137">Логістика</option>
+<option value="138">Маркетинг</option>
+<option value="52">Математика</option>
+<option value="310">Математичний аналіз</option>
+<option value="285">Спеціальна медична група</option>
+<option value="150">Менеджмент</option>
+<option value="313">Мова програмування  Java. Проектний практикум</option>
+<option value="394">Мова програмування Java. Проектний практикум - лабораторні заняття</option>
+<option value="271">Навчальна практика зі спеціальності (Економіка підприємства)</option>
+<option value="277">Навчальна практика зі спеціальності (Економічний аналіз)</option>
+<option value="275">Навчальна практика зі спеціальності (Електронна комерція)</option>
+<option value="272">Навчальна практика зі спеціальності (Комерційна діяльність)</option>
+<option value="269">Навчальна практика зі спеціальності (Комерційне товарознавство)</option>
+<option value="274">Навчальна практика зі спеціальності (Логістика)</option>
+<option value="280">Навчальна практика зі спеціальності (Менеджмент)</option>
+<option value="279">Навчальна практика зі спеціальності (Організація бізнесу)</option>
+<option value="270">Навчальна практика зі спеціальності (Організація торгівлі)</option>
+<option value="266">Навчальна практика зі спеціальності (Підприємницька діяльність)</option>
+<option value="276">Навчальна практика зі спеціальності (Планування та організація діяльності підприємства)</option>
+<option value="268">Навчальна практика зі спеціальності (Ринкові дослідження)</option>
+<option value="267">Навчальна практика зі спеціальності (Страхування)</option>
+<option value="278">Навчальна практика зі спеціальності (Фінансовий облік)</option>
+<option value="273">Навчальна практика зі спеціальності (Ціноутворення)</option>
+<option value="406">Навчальна практика &quot;Туризм (ТіОТО)</option>
+<option value="287">Навчальна практика &quot;Туризм&quot;</option>
+<option value="407">Навчальна практика &quot;Туризм&quot; (Рекреалогія)</option>
+<option value="340">Навчальна практика (вступ до фаху)</option>
+<option value="342">Навчальна практика (екологічні стежки)</option>
+<option value="299">Навчальна практика з обєктноорієнтованого програмування та баз даних </option>
+<option value="284">Навчальна практика з обєктноорієнтованого програмування та баз даних (БД)</option>
+<option value="283">Навчальна практика з обєктноорієнтованого програмування та баз даних (ООП)</option>
+<option value="298">Навчальна практика з програмування та роботи на ПК </option>
+<option value="282">Навчальна практика з програмування та роботи на ПК (Основи програмування та алгоритмічних мов)</option>
+<option value="281">Навчальна практика з програмування та роботи на ПК (Офісне програмне забезпечення)</option>
+<option value="296">Навчальна практика зі спеціальності</option>
+<option value="290">Навчальна практика зі спеціальності (Географія туризму)</option>
+<option value="437">Навчальна практика зі спеціальності (Готельно-ресторанне обслуговування)</option>
+<option value="291">Навчальна практика зі спеціальності (Екскурсійне обслуговування)</option>
+<option value="438">Навчальна практика зі спеціальності (Кейтеринг)</option>
+<option value="439">Навчальна практика зі спеціальності (Орг. обслугов. та упр. якістю ППСО)</option>
+<option value="289">Навчальна практика зі спеціальності (ТіОТО)</option>
+<option value="118">Об&#039;єктно-орієнтоване програмування</option>
+<option value="183">Об&#039;єктно-орієнтоване програмування - практичні заняття</option>
+<option value="101">Операційні системи</option>
+<option value="178">Операційні системи - практичне заняття   </option>
+<option value="159">Організація анімаційних послуг в туризмі</option>
+<option value="426">Організація анімаційних послуг в туризмі та готелях</option>
+<option value="158">Організація бізнесу сфери обслуговування</option>
+<option value="346">Організація готельного обслуговування</option>
+<option value="172">Організація екскурсійного обслуговування</option>
+<option value="162">Організація ресторанного обслуговування</option>
+<option value="419">Організація обслуговування та управління якістю продукції та послуг сфери обслуговування</option>
+<option value="335">Організація і технологія обслуговування в готелях</option>
+<option value="338">Організація і технологія обслуговування в закладах ресторанного господарства</option>
+<option value="149">Організація бізнесу</option>
+<option value="127">Організація комп&#039;ютерних мереж</option>
+<option value="189">Організація комп&#039;ютерних мереж - лабораторні заняття</option>
+<option value="139">Організація торгівлі</option>
+<option value="339">Основи гостинності та сервісології</option>
+<option value="128">Основи менеджменту та маркетингу</option>
+<option value="359">Основи правознавства</option>
+<option value="109">Основи програмування і алгоритмічні мови</option>
+<option value="180">Основи програмування і алгоритмічні мови - лабораторні заняття</option>
+<option value="119">Основи програмної інженерії</option>
+<option value="184">Основи програмної інженерії - практичні заняття</option>
+<option value="110">Основи філософських знань та культурологія</option>
+<option value="307">Основи екології</option>
+<option value="428">Основи інформаційної та кібернетичної безпеки</option>
+<option value="434">Основи інформаційної та кібернетичної безпеки - Практичні заняття</option>
+<option value="390">Основи програмування і алгоритмічні мови - практичні заняття</option>
+<option value="111">Офісне програмне забезпечення</option>
+<option value="181">Офісне програмне забезпечення - практичні заняття</option>
+<option value="319">Переддипломна практика</option>
+<option value="329">Підприємницька діяльність</option>
+<option value="154">Планування та організація діяльності підприємства</option>
+<option value="204">Планування та організація діяльності підприємства*</option>
+<option value="140">Податкова система</option>
+<option value="336">Правове регулювання у сфері обслуговування</option>
+<option value="163">Правове регулювання туристичної діяльності</option>
+<option value="173">Правове регулювання туристичної діяльності</option>
+<option value="100">Громадянська освіта: Правознавство</option>
+<option value="362">Правознавство</option>
+<option value="423">Прикладна статистика</option>
+<option value="129">Програмування для мобільних додатків</option>
+<option value="190">Програмування для мобільних додатків - лабораторні заняття</option>
+<option value="130">Проєктний практикум</option>
+<option value="174">Професійний етикет</option>
+<option value="167">Психологія</option>
+<option value="303">Психологія. Психічне здоров&#039;я</option>
+<option value="151">Регіональна економіка</option>
+<option value="344">Рекламна діяльність у сфері готельно-ресторанних послуг і туризму</option>
+<option value="155">Рекламна діяльність</option>
+<option value="164">Рекреалогія та рекреаційна географія</option>
+<option value="332">Ринкові дослідження</option>
+<option value="102">Соціологія</option>
+<option value="170">Спеціалізований туризм</option>
+<option value="322">Статистика</option>
+<option value="334">Страхування</option>
+<option value="345">Страхування в туризмі</option>
+<option value="422">Страхування підприємств сфери обслуговування</option>
+<option value="316">Тестування програмного забезпечення</option>
+<option value="396">Тестування програмного забезпечення - лабораторні заняття</option>
+<option value="264">Технологія та організація  туристичного обслуговування*</option>
+<option value="306">Технології</option>
+<option value="120">Технологія 3D моделювання та друкування</option>
+<option value="185">Технологія 3D моделювання та друкування - практичні заняття</option>
+<option value="165">Технологія та організація туристичного обслуговування</option>
+<option value="312">Теорія ймовірності й математична статистика</option>
+<option value="166">Туристичне краєзнавство</option>
+<option value="292">Туристичне країнознавство</option>
+<option value="160">Туристичні ресурси України</option>
+<option value="121">Українська мова за професійним спрямуванням</option>
+<option value="17">Українська література</option>
+<option value="16">Українська мова</option>
+<option value="323">Управління витратами</option>
+<option value="325">Управління персоналом</option>
+<option value="420">Устаткування закладів готельно-ресторанного господарства</option>
+<option value="192">Факультатив з фізичного фиховання</option>
+<option value="171">Фізичне виховання (спортивний туризм)</option>
+<option value="122">Фізика (електрика)</option>
+<option value="186">Фізика (електрика) - практичні заняття</option>
+<option value="297">Фізика та астрономія</option>
+<option value="99">Фізика та астрономія (астрономія)</option>
+<option value="98">Фізика та астрономія (фізика)</option>
+<option value="27">Фізична культура</option>
+<option value="112">Фізичне виховання</option>
+<option value="141">Фінанси підприємств</option>
+<option value="148">Фінансовий облік</option>
+<option value="104">Хімія</option>
+<option value="314">Хмарні технології</option>
+<option value="142">Ціноутворення</option>
+</select></td><td data-col-seq="4"><div class="kv-plugin-loading loading-lessonsearch-teacher_id">&nbsp;</div><select id="lessonsearch-teacher_id" class="form-control" name="LessonSearch[TEACHER_ID]" data-s2-options="s2options_3267a624" data-krajee-select2="select2_f7b2e0a7" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="">Вчителі</option>
+<option value="66">Аблязізов Ісмаїл Рамізович</option>
+<option value="70">Амосова Софія Романівна</option>
+<option value="3">Бич Юрій Романович</option>
+<option value="4">Бобко Наталія Іванівна</option>
+<option value="5">Браток Наталія Ігорівна</option>
+<option value="6">Буца Оксана Василівна</option>
+<option value="7">Винар Ярина Романівна</option>
+<option value="8">Вишатицька Наталія Володимирівна</option>
+<option value="9">Вишатицька Ольга Ярославівна</option>
+<option value="10">Герасімов Олег Русланович</option>
+<option value="11">Герговська Наталія Ярославівна</option>
+<option value="12">Геремій Ірина Стефанівна</option>
+<option value="13">Гостинська Оксана Іванівна</option>
+<option value="14">Деркач Оксана Олексіївна</option>
+<option value="15">Долубовська Ольга Романівна</option>
+<option value="16">Дутко Людмила Петрівна</option>
+<option value="72">Дутко Олена Ярославівна</option>
+<option value="17">Карпінець Богдан Петрович</option>
+<option value="18">Касій Леся Василівна</option>
+<option value="19">Кіт Наталія Миронівна</option>
+<option value="21">Козак Микола Володимирович</option>
+<option value="20">Кокодиняк Олена Євгенівна</option>
+<option value="22">Копистянська Юлія Володимирівна</option>
+<option value="23">Кравченко Оксана Олександрівна</option>
+<option value="24">Кузьменко Ольга Олександрівна</option>
+<option value="65" selected>Кузьо Андрій Тарасович</option>
+<option value="25">Кульчицький-Поливко Володимир Богданович</option>
+<option value="26">Ладичук Марія Петрівна</option>
+<option value="27">Марчук Марія Миронівна</option>
+<option value="28">Мельник Ольга Миколаївна</option>
+<option value="29">Миськів Тетяна Йосипівна</option>
+<option value="30">Михаловська Наталія Миронівна</option>
+<option value="31">Очич Марія Іванівна</option>
+<option value="32">Пазюк Наталія Орестівна</option>
+<option value="67">Петрунів Олег Володимирович</option>
+<option value="33">Петрунів Олександра Михайлівна</option>
+<option value="35">Петруняк Леся Богданівна</option>
+<option value="36">Плекан Віталій Васильович</option>
+<option value="34">Пошивак Ірина Миронівна</option>
+<option value="37">Припін Наталія Іванівна</option>
+<option value="38">Пріць Уляна Іванівна</option>
+<option value="39">Проць Галина Михайлівна</option>
+<option value="64">Самардак Андрій Іванович</option>
+<option value="40">Сарахман Марія Іванівна</option>
+<option value="42">Соломчак Тетяна Ярославівна</option>
+<option value="43">Солук Олеся Володимирівна</option>
+<option value="44">Строгуш Ігор Якович</option>
+<option value="45">Сувала Галина Ярославівна</option>
+<option value="47">Сушко Андрій Васильович</option>
+<option value="46">Сушко Христина Василівна</option>
+<option value="48">Тимців Віктор Михайлович</option>
+<option value="49">Тимчак Людмила Михайлівна</option>
+<option value="51">Ференс Богдан Андрійович</option>
+<option value="50">Ференс Роман Андрійович</option>
+<option value="71">Чорнобай Андрій Антонович</option>
+<option value="53">Шлапак Надія Віталіївна</option>
+<option value="57">Шнайдер Марія Миронівна</option>
+<option value="54">Юзефович Ігор Михайлович</option>
+<option value="55">Яким Юрій Васильович</option>
+<option value="56">Янчак Тарас Володимирович</option>
+</select></td><td data-col-seq="5"><div class="kv-plugin-loading loading-lessonsearch-kabinet_id">&nbsp;</div><select id="lessonsearch-kabinet_id" class="form-control" name="LessonSearch[KABINET_ID]" data-s2-options="s2options_3267a624" data-krajee-select2="select2_4a0aacdd" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="">Кабінети</option>
+<option value="42">106. Лабораторія інформатики, компютерних мереж та веб-технологій</option>
+<option value="43">107. Лабораторія офісного програмного забезпечення, архітектури компютера, комп&#039;ютерної графіки та 3Д-моделюввання</option>
+<option value="44">109. Навчально-методична лабораторія</option>
+<option value="45">110. Лабораторія програмної інженерії, мов програмування, баз даних та курсового проєктування</option>
+<option value="41">114. Лабораторія фізики (електрики)</option>
+<option value="40">115. Кабінет хімії, біології, екології та БЖД</option>
+<option value="37">116. Кабінет Захисту України</option>
+<option value="38">117. Кабінет фізики та астрономії</option>
+<option value="39">118. Кабінет фізичного виховання та фізичної культури</option>
+<option value="28">201. Кабінет конструювання програмного забезпечення, операційних  систем, алгоритмів та структур даних</option>
+<option value="29">202. Кабінет Студія &quot;Бізнес-Простір&quot; (Business Space)</option>
+<option value="30">203. Кабінет готельно-ресторанного сервісу</option>
+<option value="31">204. Кабінет економіки, фінансів та курсового проєктування</option>
+<option value="32">209. Кабінет бухгалтерського та фінансового обліку</option>
+<option value="33">210. Кабінет іноземних мов</option>
+<option value="34">211. Екскурсійно-туристичний кабінет</option>
+<option value="35">214. Кабінет планування та організації діяльності підприємства, інноваційної діяльності та економічного аналізу</option>
+<option value="36">215. Кабінет громадянської освіти та правознавства</option>
+<option value="23">301. Кабінет української та світової літератури</option>
+<option value="21">302. Кабінет математики</option>
+<option value="22">303. Кабінет вищої математики</option>
+<option value="20">304. Кабінет української мови</option>
+<option value="24">307. Кабінет комерції, підприємництва, менеджменту, маркетингу та курсового проєктування</option>
+<option value="25">308. Кабінет історії та суспільних дисциплін</option>
+<option value="26">311. Лабораторія інформаційних і комунікаційних технологій</option>
+<option value="27">312. Кабінет товарознавства, торгівлі та ціноутворення</option>
+<option value="46">Навчально-методичний кабінет</option>
+<option value="16">Спортивний зал</option>
+<option value="19">Читальний зал</option>
+</select></td></tr>
+</thead>
+<tbody>
+<tr class="wm5" data-key="48423"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>понеділок 09 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>1й урок</strong><br><sub>09.02.2026</sub><br><br>Інформатика<br>16кб (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">16кб (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">Інформатика</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=48423" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="0" data-key="48423"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="48424"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>понеділок 09 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>2й урок</strong><br><sub>09.02.2026</sub><br><br>Основи інф.та кіберн.безпеки<br>16кб (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">16кб (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">Основи інф.та кіберн.безпеки</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=48424" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="1" data-key="48424"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="49401"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>понеділок 09 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>3й урок</strong><br><sub>09.02.2026</sub><br><br>ІЗВП<br>46п (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">46п (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">ІЗВП</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=49401" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="2" data-key="49401"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="48141"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>понеділок 09 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>4й урок</strong><br><sub>09.02.2026</sub><br><br>Інформатика і КТ<br>18м (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">18м (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">Інформатика і КТ</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=48141" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="3" data-key="48141"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="49311"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>вівторок 10 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>1й урок</strong><br><sub>10.02.2026</sub><br><br>ІЗВП<br>44п (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">44п (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">ІЗВП</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=49311" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="4" data-key="49311"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="49404"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>вівторок 10 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>2й урок</strong><br><sub>10.02.2026</sub><br><br>ІЗВП<br>46п (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">46п (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">ІЗВП</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=49404" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="5" data-key="49404"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="49219"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>вівторок 10 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>3й урок</strong><br><sub>10.02.2026</sub><br><br>ІЗВП<br>43п (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">43п (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">ІЗВП</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=49219" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="6" data-key="49219"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="48147"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>середа 11 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>2й урок</strong><br><sub>11.02.2026</sub><br><br>Інформатика і КТ<br>18м (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">18м (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">Інформатика і КТ</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=48147" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="7" data-key="48147"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="49316"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>середа 11 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>3й урок</strong><br><sub>11.02.2026</sub><br><br>ІЗВП<br>44п (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">44п (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">ІЗВП</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=49316" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="8" data-key="49316"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="48433"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>середа 11 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>4й урок</strong><br><sub>11.02.2026</sub><br><br>Основи інф.та кіберн.безпеки<br>16кб (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">16кб (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">Основи інф.та кіберн.безпеки</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=48433" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="9" data-key="48433"></div>
+            </div>
+        </div></td></tr>
+<tr class="wm5" data-key="49221"><td class="kv-align-center kv-align-middle wm5 kv-grid-group" style="width:350px;" data-col-seq="0" data-group-key="d28fc5f3" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row" data-grouped-row>середа 11 лютого 2026</td><td class="kv-align-center kv-align-middle wm5 kv-grid-group" data-col-seq="1" data-group-key="eb6d59e8" data-odd-css="kv-grouped-row" data-even-css="kv-grouped-row"><strong>5й урок</strong><br><sub>11.02.2026</sub><br><br>ІЗВП<br>43п (2025)<br><sub><strong>Кількість годин: 2</strong></sub></td><td class="kv-align-center kv-align-middle wm5" style="width:280px;" data-col-seq="2">43п (2025)</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="3">ІЗВП</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="4">Кузьо Андрій Тарасович</td><td class="kv-align-middle wm5" style="width:180px;" data-col-seq="5">Кабінет не заданий</td><td class="skip-export kv-align-center kv-align-middle wm5" style="width:100px;" data-col-seq="actionc"><a href="/index.php?r=journal-calc%2Flesson&amp;id=49221" controller="lesson"><span class="glyphicon glyphicon-eye-open"></span></a></td><td class="skip-export kv-align-center kv-align-middle wm5 kv-expand-icon-cell wm5_fa687165" title="Розгорнути" style="width:50px;" data-col-seq="6">        <div class="kv-expand-row ">
+            <div class="kv-expand-icon kv-state-init-collapsed"><span class="glyphicon glyphicon-expand"></span></div>
+            <div class="kv-expand-detail skip-export" style="display:none;">
+                <div class="skip-export kv-expanded-row wm5_fa687165" data-index="10" data-key="49221"></div>
+            </div>
+        </div></td></tr>
+</tbody></table></div>
+<div class="kv-panel-after"> <a class="btn btn-primary" href="/index.php?r=lesson%2Fversion-for-print-classrooms&amp;date_week=2026-02-09" target="_blank">Роздрукувати форму по кабінетах</a></div>
+<div class="panel-footer">    <div class="kv-panel-pager">
+        
+    </div>
+    
+    <div class="clearfix"></div></div></div></div>
+        <style>
+            .spinner {
+                margin: 10px auto 0;
+                width: 70px;
+                text-align: center;
+            }
+
+            .spinner > div {
+                width: 18px;
+                height: 18px;
+                background-color: #333;
+
+                border-radius: 100%;
+                display: inline-block;
+                -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+                animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+            }
+
+            .spinner .bounce1 {
+                -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s;
+            }
+
+            .spinner .bounce2 {
+                -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s;
+            }
+
+            @-webkit-keyframes sk-bouncedelay {
+                0%, 80%, 100% {
+                    -webkit-transform: scale(0)
+                }
+                40% {
+                    -webkit-transform: scale(1.0)
+                }
+            }
+
+            @keyframes sk-bouncedelay {
+                0%, 80%, 100% {
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+                }
+                40% {
+                    -webkit-transform: scale(1.0);
+                    transform: scale(1.0);
+                }
+            }
+        </style>
+
+        <div class="modal fade" id="myModalWekk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"
+                            id="myModalLabel">Копіювати предмети на поточний тиждень</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="test.php" method="post">
+                            <div id="w4-kvdate" class="input-group date"><input type="text" id="w4" class="form-control krajee-datepicker" name="cop2dateweek" data-datepicker-source="w4-kvdate" data-datepicker-type="3" data-krajee-kvDatepicker="kvDatepicker_b5fd2db2"><span class="input-group-addon kv-date-remove" title="Очистити поле"><i class="glyphicon glyphicon-remove kv-dp-icon"></i></span><span class="input-group-addon kv-date-picker" title="Обрати дату"><i class="glyphicon glyphicon-calendar kv-dp-icon"></i></span></div>                            <br>
+                            <span>Кількість копій тижнів</span>
+                            <input class="form-control" type="number" name="copyCountWeek" min="1" step="1">
+                            <br>
+                            <div id="copToDateRowControllgroupWeek">
+                                <a href="/index.php?r=lesson%2Fcopy"
+                                   class="btn btn-info col-lg-12 copToDateRowSend"
+                                   id="modalWeekSend">Копіювати</a>
+                                <input type="checkbox" id="copy2dateColisionWeek" checked>
+                                <label for="copy2dateColisionWeek">Перевіряти на можливі конфлікти</label>
+                            </div>
+                        </form>
+                        2026-02-09                        2026-02-15                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModalScheduleTemplate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"
+                            id="myModalLabel">Майстер створення шаблонів розкладу</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="form_1">
+                            <form id="copy_form_1" class="form-vertical kv-form-bs3" action="/index.php?r=schedule%2Fcreate-from-lessons" method="post" role="form">
+<input type="hidden" name="_csrf-backend" value="6r2WPzozPTOObNKi7SFrFMfg6GKR9hYhoUoPfsNc0nrb1vwJa1FUR9w7h5qyRS0k_66HBMm4bnDZDV419GmQPA==">                            <div class="form-group">
+                                <div class="kv-plugin-loading loading-scheduleTplChoose">&nbsp;</div><select id="scheduleTplChoose" class="form-control" name="template" data-s2-options="s2options_3267a624" data-krajee-select2="select2_ea31679c" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Новий шаблон</option>
+</select>                            </div>
+                            <div class="form-group">
+                                <input type="text" id="scheduleTplName" class="form-control" name="tplTitle" placeholder="Задайте назву шаблону">                            </div>
+                            <div class="form-group">
+                                <div class="kv-plugin-loading loading-scheduleTplBranch">&nbsp;</div><select id="scheduleTplBranch" class="form-control" name="branch_id" data-s2-options="s2options_3267a624" data-krajee-select2="select2_ea31679c" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Основна філія</option>
+</select>                            </div>
+                            <input type="hidden" id="date_from_1" name="date_from" value="2026-02-09">                            <input type="hidden" id="date_to_1" name="date_to" value="2026-02-15">                            <button class="btn btn-default"
+                                    id="create_from_lessons">Зберегти</button>
+                            </form>                        </div>
+                        <div class="is-hide" id="loading_1">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                            <p>
+                                Іде копіювання. Це може зайняти декілька хвилин, не закривайте вікно браузера.                            </p>
+                        </div>
+                        <div id="success_1" class="is-hide">
+                            <div class="alert alert-success">
+                                Шаблон збережено. Тепер Ви можете завантажувати розклад з цього шаблону.                            </div>
+                            <a href="https://admin-saceit.smart-school.com.ua/index.php?r=lesson%2Findex&LessonSearch%5BTEACHER_ID%5D=65&order_lesson=1" class="btn btn-default">
+                                Завершити роботу майстра.                            </a>
+                        </div>
+                        <div id="error_1" class="is-hide">
+                            <div class="alert alert-danger">
+                                Виникла помилка при формуванні шаблону. Будь ласка, спробуйте ще раз.                            </div>
+                            <a href="https://admin-saceit.smart-school.com.ua/index.php?r=lesson%2Findex&LessonSearch%5BTEACHER_ID%5D=65&order_lesson=1" class="btn btn-default">
+                                Завершити роботу майстра.                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModalScheduleTemplateChoose" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Майстер створення занять за шаблоном                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="form_2">
+                                                        <form id="copy_form_2" class="form-vertical kv-form-bs3" action="/index.php?r=schedule%2Fcreate-from-schedule" method="post" role="form">
+<input type="hidden" name="_csrf-backend" value="6r2WPzozPTOObNKi7SFrFMfg6GKR9hYhoUoPfsNc0nrb1vwJa1FUR9w7h5qyRS0k_66HBMm4bnDZDV419GmQPA==">                            <div class="form-group">
+                                <div class="kv-plugin-loading loading-scheduleTplChoose1">&nbsp;</div><select id="scheduleTplChoose1" class="form-control" name="template_load" data-s2-options="s2options_3267a624" data-krajee-select2="select2_0b89ef7d" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="">Оберіть шаблон</option>
+</select>                            </div>
+                            <div class="form-group">
+                                <div class="kv-plugin-loading loading-scheduleImportReplacementsAction">&nbsp;</div><select id="scheduleImportReplacementsAction" class="form-control" name="replacement_action" data-s2-options="s2options_3267a624" data-krajee-select2="select2_2db6ce4f" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="">Оберіть тип імпорту замін</option>
+<option value="all">Імпортувати всі заміни</option>
+<option value="regular">Імпортувати постійні заміни</option>
+<option value="none">Ігнорувати заміни</option>
+</select>                            </div>
+                            <div class="form-group">
+                                <div class="kv-plugin-loading loading-allowMultipleSchedulesCheckbox">&nbsp;</div><select id="allowMultipleSchedulesCheckbox" class="form-control" name="allowMultipleSchedulesCheckbox" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Заборонити завантажити шаблон за наявності занять</option>
+<option value="1">Дозволити завантажити шаблон за наявності занять</option>
+</select>                            </div>
+                            <div class="form-group">
+                                <div class="kv-plugin-loading loading-allClasses">&nbsp;</div><select id="allClasses" class="form-control" name="all-classes" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="1" selected>Для всіх груп</option>
+<option value="0">Обрати групи</option>
+</select>                            </div>
+                            <div class="form-group selected-classes-wrapper" style="display: none;">
+                                <label for="selectedClasses">Оберіть групи</label>                                <span id="parent-s2-togall-selectedClasses" style="display:none"><span id="s2-togall-selectedClasses" class="s2-togall-button s2-togall-select"><span class="s2-select-label"><i class="glyphicon glyphicon-unchecked"></i>Обрати всі</span><span class="s2-unselect-label"><i class="glyphicon glyphicon-check"></i>Очистити всі</span></span></span><div class="kv-plugin-loading loading-selectedClasses">&nbsp;</div><select id="selectedClasses" class="form-control" name="selected-classes[]" multiple size="4" data-s2-options="s2options_669e5a8e" data-krajee-select2="select2_bdd6053c" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="90">11т (2025)</option>
+<option value="71">12к (2025)</option>
+<option value="91">13п (2025)</option>
+<option value="92">14п (2025)</option>
+<option value="93">15п (2025)</option>
+<option value="79">16кб (2025)</option>
+<option value="70">17гр (2025)</option>
+<option value="64">18м (2025)</option>
+<option value="74">21т (2025)</option>
+<option value="69">22к (2025)</option>
+<option value="87">23п (2025)</option>
+<option value="88">24п (2025)</option>
+<option value="78">25е (2025)</option>
+<option value="89">26п (2025)</option>
+<option value="67">27гр (2025)</option>
+<option value="95">28т (2025)</option>
+<option value="94">29к (2025)</option>
+<option value="65">310гр (2025)</option>
+<option value="77">311е (2025)</option>
+<option value="73">31т (2025)</option>
+<option value="68">32к (2025)</option>
+<option value="83">33п (2025)</option>
+<option value="84">34п (2025)</option>
+<option value="76">35е (2025)</option>
+<option value="85">36п (2025)</option>
+<option value="66">37гр (2025)</option>
+<option value="72">38т (2025)</option>
+<option value="86">39п (2025)</option>
+<option value="80">43п (2025)</option>
+<option value="81">44п (2025)</option>
+<option value="82">46п (2025)</option>
+</select>                            </div>
+                            <div class="form-group">
+                                <div class="kv-plugin-loading loading-weekModeSelect">&nbsp;</div><select id="weekModeSelect" class="form-control" name="weekModeSelect" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0" selected>Завантажити на весь тиждень</option>
+<option value="1">Обрати дні тижня</option>
+</select>                            </div>
+                            <div class="selected-mode-wrapper" style="display: none">
+                                                                    <div class="form-group">
+                                        <input type="checkbox" id="weekdayElement1" class="form-check-input" name="weekdays[]" value="1" checked>                                        <label for="weekdayElement1">Понеділок</label>
+                                    </div>
+                                                                    <div class="form-group">
+                                        <input type="checkbox" id="weekdayElement2" class="form-check-input" name="weekdays[]" value="2" checked>                                        <label for="weekdayElement2">Вівторок</label>
+                                    </div>
+                                                                    <div class="form-group">
+                                        <input type="checkbox" id="weekdayElement3" class="form-check-input" name="weekdays[]" value="3" checked>                                        <label for="weekdayElement3">Середа</label>
+                                    </div>
+                                                                    <div class="form-group">
+                                        <input type="checkbox" id="weekdayElement4" class="form-check-input" name="weekdays[]" value="4" checked>                                        <label for="weekdayElement4">Четвер</label>
+                                    </div>
+                                                                    <div class="form-group">
+                                        <input type="checkbox" id="weekdayElement5" class="form-check-input" name="weekdays[]" value="5" checked>                                        <label for="weekdayElement5">П'ятниця</label>
+                                    </div>
+                                                                    <div class="form-group">
+                                        <input type="checkbox" id="weekdayElement6" class="form-check-input" name="weekdays[]" value="6" checked>                                        <label for="weekdayElement6">Субота</label>
+                                    </div>
+                                                                    <div class="form-group">
+                                        <input type="checkbox" id="weekdayElement7" class="form-check-input" name="weekdays[]" value="7" checked>                                        <label for="weekdayElement7">Неділя</label>
+                                    </div>
+                                                            </div>
+                            <input type="hidden" id="date_from_2" name="date_from" value="2026-02-09">                            <input type="hidden" id="date_to_2" name="date_to" value="2026-02-15">                            </form>                        </div>
+                        <div class="is-hide" id="loading_2">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                            <p>
+                                Іде формування занять. Це може зайняти декілька хвилин, не закривайте вікно браузера.                            </p>
+                        </div>
+                        <div id="success_2" class="is-hide">
+                            <div class="alert alert-success">
+                                Розклад збережено згідно до шаблону.                            </div>
+                        </div>
+                        <div id="error_2" class="is-hide">
+                            <div class="alert alert-danger">
+                                Виникла помилка при формуванні розкладу. Будь ласка, спробуйте пізніше.                            </div>
+                        </div>
+                        <div id="error_2_2" class="is-hide">
+                            <div class="alert alert-warning">
+                                На цьому тижні вже є заняття. Формування розкладу неможливе.                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="fromScheduleFooter">
+                        <button class="btn btn-default" id="create_from_schedule">
+                            Завантажити                        </button>
+                        <a href="https://admin-saceit.smart-school.com.ua/index.php?r=lesson%2Findex&LessonSearch%5BTEACHER_ID%5D=65&order_lesson=1" class="btn btn-default"
+                           id="create_from_schedule_success" style="display: none">
+                            Завершити роботу майстра.                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title"
+                            id="myModalLabel">Копіювати предмети на вибрану дату</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="w5-kvdate" class="input-group date"><input type="text" id="w5" class="form-control krajee-datepicker" name="cop2date" data-datepicker-source="w5-kvdate" data-datepicker-type="3" data-krajee-kvDatepicker="kvDatepicker_b5fd2db2"><span class="input-group-addon kv-date-remove" title="Очистити поле"><i class="glyphicon glyphicon-remove kv-dp-icon"></i></span><span class="input-group-addon kv-date-picker" title="Обрати дату"><i class="glyphicon glyphicon-calendar kv-dp-icon"></i></span></div>                        <br>
+                        <div id="copToDateRowControllgroup">
+                            <a href="/index.php?r=lesson%2Fcopy"
+                               class="btn btn-info col-lg-12 copToDateRowSend">Копіювати</a>
+                            <input type="checkbox" id="copy2dateColision" checked>
+                            <label for="copy2dateColision">Перевіряти на можливі конфлікти</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div id="allOk" class="alert alert-success" role="alert"></div>
+                        <div id="emptyRow" class="alert alert-warning" role="alert"></div>
+                        <div id="serverError" class="alert alert-danger" role="alert"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modalBranches" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Оберіть філію</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <select id="branch_print_select" class="form-control" name="branches_select">
+<option value="0">Основна філія</option>
+</select>                        </div>
+                        <button class="btn btn-default" id="branch_print_selected_button" style="width: 100%">
+                            Продовжити                        </button>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="printSimpleClassesModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Налаштування форми</h4>
+                </div>
+                <div class="modal-body">
+                                            <div class="form-group">
+                            <label>Розподіл за паралельними групами</label>
+                            <div class="kv-plugin-loading loading-printSimpleClassesSeparateParallels">&nbsp;</div><select id="printSimpleClassesSeparateParallels" class="form-control" name="printSimpleClassesSeparateParallels" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Не розподіляти за паралелями</option>
+<option value="1" selected>Розподілити за паралелями</option>
+</select>                        </div>
+                                        <div class="form-group">
+                        <label>Об'єднання підгруп</label>
+                        <div class="kv-plugin-loading loading-printSimpleClassesGroupRelations">&nbsp;</div><select id="printSimpleClassesGroupRelations" class="form-control" name="printSimpleClassesGroupRelations" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Не об&#039;єднувати підгрупи</option>
+<option value="1" selected>Об&#039;єднати підгрупи</option>
+</select>                    </div>
+                    <div class="form-group">
+                        <label>Скорочення назви предметів</label>
+                        <div class="kv-plugin-loading loading-printSimpleClassesAbbreviations">&nbsp;</div><select id="printSimpleClassesAbbreviations" class="form-control" name="printSimpleClassesAbbreviations" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Не скорочувати назви предметів</option>
+<option value="1" selected>За можливості скоротити назви предметів</option>
+</select>                    </div>
+                    <div class="form-group">
+                        <label>Друк кабінетів</label>
+                        <div class="kv-plugin-loading loading-printSimpleClassesClassRooms">&nbsp;</div><select id="printSimpleClassesClassRooms" class="form-control" name="printSimpleClassesClassRooms" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Не друкувати кабінети</option>
+<option value="1" selected>Друкувати кабінети</option>
+</select>                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="printSimpleClasses"
+                            data-base="/index.php?r=lesson%2Fprint-classes&date=2026-02-09">
+                        Продовжити                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<form id="w6" class="form-vertical kv-form-bs3" action="/index.php?r=lesson%2Fmass-replacement" method="post" role="form">
+<input type="hidden" name="_csrf-backend" value="6r2WPzozPTOObNKi7SFrFMfg6GKR9hYhoUoPfsNc0nrb1vwJa1FUR9w7h5qyRS0k_66HBMm4bnDZDV419GmQPA==">    <div class="modal fade" id="massReplacementModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Масові заміни                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group highlight-addon field-lessonmassreplacement-datefrom required">
+<label class="form-label has-star" for="lessonmassreplacement-datefrom">Початкова дата</label>
+
+<div id="lessonmassreplacement-datefrom-kvdate" class="input-group date"><span class="input-group-addon kv-date-picker" title="Обрати дату"><i class="glyphicon glyphicon-calendar kv-dp-icon"></i></span><input type="text" id="lessonmassreplacement-datefrom" class="form-control krajee-datepicker" name="LessonMassReplacement[dateFrom]" value="09.02.2026" aria-required="true" data-datepicker-source="lessonmassreplacement-datefrom-kvdate" data-datepicker-type="2" data-krajee-kvDatepicker="kvDatepicker_27fac8fa"></div>
+
+<div class="help-block help-block-error"></div>
+
+</div>                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group highlight-addon field-lessonmassreplacement-dateto required">
+<label class="form-label has-star" for="lessonmassreplacement-dateto">Кінцева дата</label>
+
+<div id="lessonmassreplacement-dateto-kvdate" class="input-group date"><span class="input-group-addon kv-date-picker" title="Обрати дату"><i class="glyphicon glyphicon-calendar kv-dp-icon"></i></span><input type="text" id="lessonmassreplacement-dateto" class="form-control krajee-datepicker" name="LessonMassReplacement[dateTo]" value="15.02.2026" aria-required="true" data-datepicker-source="lessonmassreplacement-dateto-kvdate" data-datepicker-type="2" data-krajee-kvDatepicker="kvDatepicker_27fac8fa"></div>
+
+<div class="help-block help-block-error"></div>
+
+</div>                        </div>
+                    </div>
+                    <div class="form-group highlight-addon field-lessonmassreplacement-classid required">
+<label class="form-label has-star" for="lessonmassreplacement-classid">Група</label>
+
+<div class="kv-plugin-loading loading-lessonmassreplacement-classid">&nbsp;</div><select id="lessonmassreplacement-classid" class="form-control" name="LessonMassReplacement[classID]" aria-required="true" data-s2-options="s2options_3267a624" data-krajee-select2="select2_878cdf7d" style="width: 100%; height: 1px; visibility: hidden;">
+<option value=""></option>
+<option value="90">11т (2025)</option>
+<option value="71">12к (2025)</option>
+<option value="91">13п (2025)</option>
+<option value="92">14п (2025)</option>
+<option value="93">15п (2025)</option>
+<option value="79">16кб (2025)</option>
+<option value="70">17гр (2025)</option>
+<option value="64">18м (2025)</option>
+<option value="74">21т (2025)</option>
+<option value="69">22к (2025)</option>
+<option value="87">23п (2025)</option>
+<option value="88">24п (2025)</option>
+<option value="78">25е (2025)</option>
+<option value="89">26п (2025)</option>
+<option value="67">27гр (2025)</option>
+<option value="95">28т (2025)</option>
+<option value="94">29к (2025)</option>
+<option value="65">310гр (2025)</option>
+<option value="77">311е (2025)</option>
+<option value="73">31т (2025)</option>
+<option value="68">32к (2025)</option>
+<option value="83">33п (2025)</option>
+<option value="84">34п (2025)</option>
+<option value="76">35е (2025)</option>
+<option value="85">36п (2025)</option>
+<option value="66">37гр (2025)</option>
+<option value="72">38т (2025)</option>
+<option value="86">39п (2025)</option>
+<option value="80">43п (2025)</option>
+<option value="81">44п (2025)</option>
+<option value="82">46п (2025)</option>
+</select>
+
+<div class="help-block help-block-error"></div>
+
+</div>                    <div class="form-group highlight-addon field-lessonmassreplacement-journalid">
+<label class="form-label has-star" for="lessonmassreplacement-journalid">Журнал (предмет-вчитель)</label>
+
+<div class="kv-plugin-loading loading-lessonmassreplacement-journalid">&nbsp;</div><select id="lessonmassreplacement-journalid" class="form-control" name="LessonMassReplacement[journalID]" data-krajee-depdrop="depdrop_e987150a" data-s2-options="s2options_3267a624" data-krajee-select2="select2_8f1b3329" style="width: 100%; height: 1px; visibility: hidden;">
+<option value=""></option>
+</select>
+
+<div class="help-block help-block-error"></div>
+
+</div>                    <div class="form-group highlight-addon field-lessonmassreplacement-reason">
+<label class="form-label has-star" for="lessonmassreplacement-reason">Причина відсутності основного вчителя</label>
+
+<div><input type="text" id="lessonmassreplacement-reason" class="form-control" name="LessonMassReplacement[reason]" placeholder="Причина пропуску" data-krajee-typeahead="typeahead_7864e59a"></div>
+
+<div class="help-block help-block-error"></div>
+
+</div>                    <div class="form-group highlight-addon field-lessonmassreplacement-fromteacherid required">
+<label class="form-label has-star" for="lessonmassreplacement-fromteacherid">Викладач, якого замінили</label>
+
+<div class="kv-plugin-loading loading-lessonmassreplacement-fromteacherid">&nbsp;</div><select id="lessonmassreplacement-fromteacherid" class="form-control" name="LessonMassReplacement[fromTeacherID]" aria-required="true" data-s2-options="s2options_3267a624" data-krajee-select2="select2_878cdf7d" style="width: 100%; height: 1px; visibility: hidden;">
+<option value=""></option>
+<option value="66">Аблязізов Ісмаїл Рамізович</option>
+<option value="70">Амосова Софія Романівна</option>
+<option value="3">Бич Юрій Романович</option>
+<option value="4">Бобко Наталія Іванівна</option>
+<option value="5">Браток Наталія Ігорівна</option>
+<option value="6">Буца Оксана Василівна</option>
+<option value="7">Винар Ярина Романівна</option>
+<option value="8">Вишатицька Наталія Володимирівна</option>
+<option value="9">Вишатицька Ольга Ярославівна</option>
+<option value="10">Герасімов Олег Русланович</option>
+<option value="11">Герговська Наталія Ярославівна</option>
+<option value="12">Геремій Ірина Стефанівна</option>
+<option value="13">Гостинська Оксана Іванівна</option>
+<option value="14">Деркач Оксана Олексіївна</option>
+<option value="15">Долубовська Ольга Романівна</option>
+<option value="16">Дутко Людмила Петрівна</option>
+<option value="72">Дутко Олена Ярославівна</option>
+<option value="17">Карпінець Богдан Петрович</option>
+<option value="18">Касій Леся Василівна</option>
+<option value="19">Кіт Наталія Миронівна</option>
+<option value="21">Козак Микола Володимирович</option>
+<option value="20">Кокодиняк Олена Євгенівна</option>
+<option value="22">Копистянська Юлія Володимирівна</option>
+<option value="23">Кравченко Оксана Олександрівна</option>
+<option value="24">Кузьменко Ольга Олександрівна</option>
+<option value="65">Кузьо Андрій Тарасович</option>
+<option value="25">Кульчицький-Поливко Володимир Богданович</option>
+<option value="26">Ладичук Марія Петрівна</option>
+<option value="27">Марчук Марія Миронівна</option>
+<option value="28">Мельник Ольга Миколаївна</option>
+<option value="29">Миськів Тетяна Йосипівна</option>
+<option value="30">Михаловська Наталія Миронівна</option>
+<option value="31">Очич Марія Іванівна</option>
+<option value="32">Пазюк Наталія Орестівна</option>
+<option value="67">Петрунів Олег Володимирович</option>
+<option value="33">Петрунів Олександра Михайлівна</option>
+<option value="35">Петруняк Леся Богданівна</option>
+<option value="36">Плекан Віталій Васильович</option>
+<option value="34">Пошивак Ірина Миронівна</option>
+<option value="37">Припін Наталія Іванівна</option>
+<option value="38">Пріць Уляна Іванівна</option>
+<option value="39">Проць Галина Михайлівна</option>
+<option value="64">Самардак Андрій Іванович</option>
+<option value="40">Сарахман Марія Іванівна</option>
+<option value="42">Соломчак Тетяна Ярославівна</option>
+<option value="43">Солук Олеся Володимирівна</option>
+<option value="44">Строгуш Ігор Якович</option>
+<option value="45">Сувала Галина Ярославівна</option>
+<option value="47">Сушко Андрій Васильович</option>
+<option value="46">Сушко Христина Василівна</option>
+<option value="48">Тимців Віктор Михайлович</option>
+<option value="49">Тимчак Людмила Михайлівна</option>
+<option value="51">Ференс Богдан Андрійович</option>
+<option value="50">Ференс Роман Андрійович</option>
+<option value="71">Чорнобай Андрій Антонович</option>
+<option value="53">Шлапак Надія Віталіївна</option>
+<option value="57">Шнайдер Марія Миронівна</option>
+<option value="54">Юзефович Ігор Михайлович</option>
+<option value="55">Яким Юрій Васильович</option>
+<option value="56">Янчак Тарас Володимирович</option>
+</select>
+
+<div class="help-block help-block-error"></div>
+
+</div>                    <div class="form-group highlight-addon field-lessonmassreplacement-toteacherid required">
+<label class="form-label has-star" for="lessonmassreplacement-toteacherid">Викладач, який замінив</label>
+
+<div class="kv-plugin-loading loading-lessonmassreplacement-toteacherid">&nbsp;</div><select id="lessonmassreplacement-toteacherid" class="form-control" name="LessonMassReplacement[toTeacherID]" aria-required="true" data-s2-options="s2options_3267a624" data-krajee-select2="select2_878cdf7d" style="width: 100%; height: 1px; visibility: hidden;">
+<option value=""></option>
+<option value="66">Аблязізов Ісмаїл Рамізович</option>
+<option value="70">Амосова Софія Романівна</option>
+<option value="3">Бич Юрій Романович</option>
+<option value="4">Бобко Наталія Іванівна</option>
+<option value="5">Браток Наталія Ігорівна</option>
+<option value="6">Буца Оксана Василівна</option>
+<option value="7">Винар Ярина Романівна</option>
+<option value="8">Вишатицька Наталія Володимирівна</option>
+<option value="9">Вишатицька Ольга Ярославівна</option>
+<option value="10">Герасімов Олег Русланович</option>
+<option value="11">Герговська Наталія Ярославівна</option>
+<option value="12">Геремій Ірина Стефанівна</option>
+<option value="13">Гостинська Оксана Іванівна</option>
+<option value="14">Деркач Оксана Олексіївна</option>
+<option value="15">Долубовська Ольга Романівна</option>
+<option value="16">Дутко Людмила Петрівна</option>
+<option value="72">Дутко Олена Ярославівна</option>
+<option value="17">Карпінець Богдан Петрович</option>
+<option value="18">Касій Леся Василівна</option>
+<option value="19">Кіт Наталія Миронівна</option>
+<option value="21">Козак Микола Володимирович</option>
+<option value="20">Кокодиняк Олена Євгенівна</option>
+<option value="22">Копистянська Юлія Володимирівна</option>
+<option value="23">Кравченко Оксана Олександрівна</option>
+<option value="24">Кузьменко Ольга Олександрівна</option>
+<option value="65">Кузьо Андрій Тарасович</option>
+<option value="25">Кульчицький-Поливко Володимир Богданович</option>
+<option value="26">Ладичук Марія Петрівна</option>
+<option value="27">Марчук Марія Миронівна</option>
+<option value="28">Мельник Ольга Миколаївна</option>
+<option value="29">Миськів Тетяна Йосипівна</option>
+<option value="30">Михаловська Наталія Миронівна</option>
+<option value="31">Очич Марія Іванівна</option>
+<option value="32">Пазюк Наталія Орестівна</option>
+<option value="67">Петрунів Олег Володимирович</option>
+<option value="33">Петрунів Олександра Михайлівна</option>
+<option value="35">Петруняк Леся Богданівна</option>
+<option value="36">Плекан Віталій Васильович</option>
+<option value="34">Пошивак Ірина Миронівна</option>
+<option value="37">Припін Наталія Іванівна</option>
+<option value="38">Пріць Уляна Іванівна</option>
+<option value="39">Проць Галина Михайлівна</option>
+<option value="64">Самардак Андрій Іванович</option>
+<option value="40">Сарахман Марія Іванівна</option>
+<option value="42">Соломчак Тетяна Ярославівна</option>
+<option value="43">Солук Олеся Володимирівна</option>
+<option value="44">Строгуш Ігор Якович</option>
+<option value="45">Сувала Галина Ярославівна</option>
+<option value="47">Сушко Андрій Васильович</option>
+<option value="46">Сушко Христина Василівна</option>
+<option value="48">Тимців Віктор Михайлович</option>
+<option value="49">Тимчак Людмила Михайлівна</option>
+<option value="51">Ференс Богдан Андрійович</option>
+<option value="50">Ференс Роман Андрійович</option>
+<option value="71">Чорнобай Андрій Антонович</option>
+<option value="53">Шлапак Надія Віталіївна</option>
+<option value="57">Шнайдер Марія Миронівна</option>
+<option value="54">Юзефович Ігор Михайлович</option>
+<option value="55">Яким Юрій Васильович</option>
+<option value="56">Янчак Тарас Володимирович</option>
+</select>
+
+<div class="help-block help-block-error"></div>
+
+</div>                    <div class="form-group highlight-addon field-lessonmassreplacement-paymenttype required">
+<label class="form-label has-star" for="lessonmassreplacement-paymenttype">Тип оплати</label>
+
+<div class="kv-plugin-loading loading-lessonmassreplacement-paymenttype">&nbsp;</div><select id="lessonmassreplacement-paymenttype" class="form-control" name="LessonMassReplacement[paymentType]" aria-required="true" data-s2-options="s2options_3267a624" data-krajee-select2="select2_3911df10" style="width: 100%; height: 1px; visibility: hidden;">
+<option value=""></option>
+<option value="0">Оплачувана заміна</option>
+<option value="1">Безоплатна заміна</option>
+<option value="2">Оплата зі спецфонду</option>
+<option value="3">Безоплатна з спецфонду</option>
+</select>
+
+<div class="help-block help-block-error"></div>
+
+</div>                    <div class="form-group highlight-addon field-lessonmassreplacement-isunion">
+<div class="checkbox"><label class="form-label has-star" for="lessonmassreplacement-isunion">
+<input type="hidden" name="LessonMassReplacement[isUnion]" value="0"><input type="checkbox" id="lessonmassreplacement-isunion" name="LessonMassReplacement[isUnion]" value="1">
+Обʼєднання підгруп
+</label>
+<div class="help-block help-block-error"></div>
+</div>
+</div>                    <div class="form-group highlight-addon field-massIsRegular">
+<div class="checkbox"><label class="form-label has-star" for="massIsRegular">
+<input type="hidden" name="LessonMassReplacement[isRegular]" value="0"><input type="checkbox" id="massIsRegular" name="LessonMassReplacement[isRegular]" value="1">
+Постійна заміна
+</label>
+<div class="help-block help-block-error"></div>
+</div>
+</div>                    <div class="form-group highlight-addon field-massIsEditingAllowed">
+<div class="checkbox"><label class="form-label has-star" for="massIsEditingAllowed">
+<input type="hidden" name="LessonMassReplacement[isEditingAllowed]" value="0"><input type="checkbox" id="massIsEditingAllowed" name="LessonMassReplacement[isEditingAllowed]" value="1">
+Дозволити редагувати уроки
+</label>
+<div class="help-block help-block-error"></div>
+</div>
+</div>                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Зберегти</button>                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="" method="get" target="_blank" id="basePrintForm">
+    <div class="modal fade" id="basePrintModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        Налаштування друкованої форми                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="kv-plugin-loading loading-w7">&nbsp;</div><select id="w7" class="form-control" name="printDate" data-s2-options="s2options_3267a624" data-krajee-select2="select2_b4b53d3e" style="width: 100%; height: 1px; visibility: hidden;">
+<option value="0">Приховати дату</option>
+<option value="1" selected>Друкувати дату</option>
+</select>                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Продовжити</button>                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+    </section>
+</div>
+
+<footer class="main-footer hidden-print">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.0
+    </div>
+    <strong>Copyright &copy; 2026</footer>
+
+<div class='control-sidebar-bg'></div>
+
+    </div>
+
+        <script type="text/javascript">
+        if (hasMediaIds === undefined) {
+            var hasMediaIds = null;
+        }
+    </script>
+    <script src="/assets/59d206da/jquery.js"></script>
+<script src="/assets/b40db2b8/yii.js"></script>
+<script src="/assets/b40db2b8/yii.activeForm.js"></script>
+<script src="/assets/9852b0d4/js/bootstrap.js"></script>
+<script src="/assets/8bf68612/js/activeform.min.js"></script>
+<script src="/assets/bf87b5a3/js/daterangepicker.min.js"></script>
+<script src="/assets/acd75809/js/kv-widgets.min.js"></script>
+<script src="/assets/b40db2b8/yii.gridView.js"></script>
+<script src="/assets/cdec546c/js/kv-grid-group.min.js"></script>
+<script src="/assets/cdec546c/js/kv-grid-expand.min.js"></script>
+<script src="/assets/f2679d92/js/bootstrap-dialog.min.js"></script>
+<script src="/assets/f2679d92/js/dialog-yii.min.js"></script>
+<script src="/assets/cdec546c/js/kv-grid-export.min.js"></script>
+<script src="/assets/cdec546c/js/jquery.resizableColumns.min.js"></script>
+<script src="/assets/3d2a2d94/js/bootstrap-datepicker.min.js"></script>
+<script src="/assets/3d2a2d94/js/datepicker-kv.min.js"></script>
+<script src="/assets/3d2a2d94/js/locales/bootstrap-datepicker.uk.min.js"></script>
+<script src="/assets/dfec8d4e/js/select2.full.min.js"></script>
+<script src="/assets/dfec8d4e/js/i18n/uk.js"></script>
+<script src="/assets/3ff98f81/js/select2-krajee.min.js"></script>
+<script src="/assets/b40db2b8/yii.validation.js"></script>
+<script src="/assets/8eb39d5c/js/dependent-dropdown.min.js"></script>
+<script src="/assets/2fee0720/js/depdrop.min.js"></script>
+<script src="/assets/42c376da/js/typeahead.bundle.min.js"></script>
+<script src="/assets/42c376da/js/typeahead-kv.min.js"></script>
+<script src="/assets/42c376da/js/handlebars.min.js"></script>
+<script src="/js/build/vendor-dc3952c5a0.js"></script>
+<script src="/js/build/main-1c13e5cd0a.js"></script>
+<script src="/js/build/vue-bundle.js"></script>
+<script src="/js/vendor/jq-switcher/dist/jquery.twbs-toggle-buttons.min.js"></script>
+<script src="/js/vendor/jq-number-spiner/bootstrap-number-input.js"></script>
+<script src="/js/datepicker_switch.js"></script>
+<script src="/js/clipboard.js"></script>
+<script src="/assets/430c64ee/js/adminlte.min.js"></script>
+<script>jQuery(function ($) {
+var $el=jQuery("#w0 .kv-hint-special");if($el.length){$el.each(function(){$(this).activeFieldHint()});}
+jQuery("#lessonsearch-date_range").off('change.kvdrp').on('change.kvdrp', function(e) {
+    var drp = jQuery("#lessonsearch-date_range").closest('.input-group').data('daterangepicker'), fm, to;
+    if ($(this).val() || !drp) {
+        return;
+    }
+    fm = moment().startOf('day').format('YYYY-MM-DD') || '';
+    to = moment().format('YYYY-MM-DD') || '';
+    drp.setStartDate(fm);
+    drp.setEndDate(to);
+    var v=jQuery('#lessonsearch-date_range').val() ? start.format('YYYY-MM-DD') : '';jQuery('#lessonsearch-date_range-start').val(v).trigger('change');var v=jQuery('#lessonsearch-date_range').val() ? end.format('YYYY-MM-DD') : '';jQuery('#lessonsearch-date_range-end').val(v).trigger('change');
+});
+jQuery&&jQuery.pjax&&(jQuery.pjax.defaults.maxCacheLength=0);
+if (jQuery('#lessonsearch-date_range').data('daterangepicker')) { jQuery('#lessonsearch-date_range').daterangepicker('destroy'); }
+jQuery("#lessonsearch-date_range").closest('.input-group').daterangepicker(daterangepicker_86e0c135, function(start,end,label){var val=start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD');jQuery("#lessonsearch-date_range").val(val).trigger('change');var v=jQuery('#lessonsearch-date_range').val() ? start.format('YYYY-MM-DD') : '';jQuery('#lessonsearch-date_range-start').val(v).trigger('change');var v=jQuery('#lessonsearch-date_range').val() ? end.format('YYYY-MM-DD') : '';jQuery('#lessonsearch-date_range-end').val(v).trigger('change');});
+
+jQuery('#w0').yiiActiveForm([], []);
+kvGridGroup('wm5');
+kvExpandRow(kvExpandRow_ea0d53b3, 'wm5_fa687165');
+jQuery('#w1').dropdown();
+krajeeYiiConfirm('krajeeDialog');
+var kvGridExp_718c490f={"gridId":"wm5","action":"/index.php?r=gridview%2Fexport%2Fdownload","module":"gridview","encoding":"utf-8","bom":1,"target":"_blank","messages":{"allowPopups":"Щоб скачати файл, вимкніть блокування спливаючих вікон у вашому браузері.","confirmDownload":"Продовжити?","downloadProgress":"Файл для експорту генерується. Будь ласка зачекайте...","downloadComplete":"Зараз почнеться завантаження файлу. Будь ласка зачекайте..."},"exportConversions":[{"from":"<span class=\"glyphicon glyphicon-ok-sign text-success\" style=\"font-weight:bold\"></span>","to":"Вкл"},{"from":"<span class=\"glyphicon glyphicon-remove-sign text-danger\" style=\"font-weight:bold\"></span>","to":"Вимк"}],"skipExportElements":[".sr-only",".hide"],"showConfirmAlert":true};
+var kvGridExp_e46639af={"filename":"rozklad-export","showHeader":true,"showPageSummary":true,"showFooter":true};
+var kvGridExp_2a32eedf={"dialogLib":"krajeeDialog","gridOpts":kvGridExp_718c490f,"genOpts":kvGridExp_e46639af,"alertMsg":"The HTML export file will be generated for download.","config":{"cssFile":"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"}};
+var kvGridExp_9b485e6c={"dialogLib":"krajeeDialog","gridOpts":kvGridExp_718c490f,"genOpts":kvGridExp_e46639af,"alertMsg":"The EXCEL export file will be generated for download.","config":{"worksheet":"ExportWorksheet","cssFile":""}};
+var kvGridExp_fd13ad6c={"dialogLib":"krajeeDialog","gridOpts":kvGridExp_718c490f,"genOpts":kvGridExp_e46639af,"alertMsg":"The PDF export file will be generated for download.","config":{"mode":"UTF-8","format":"A4","destination":"D","marginTop":20,"marginBottom":20,"cssInline":".kv-wrap{padding:20px;}.kv-align-center{text-align:center;}.kv-align-left{text-align:left;}.kv-align-right{text-align:right;}.kv-align-top{vertical-align:top!important;}.kv-align-bottom{vertical-align:bottom!important;}.kv-align-middle{vertical-align:middle!important;}.kv-page-summary{border-top:4px double #ddd;font-weight: bold;}.kv-table-footer{border-top:4px double #ddd;font-weight: bold;}.kv-table-caption{font-size:1.5em;padding:8px;border:1px solid #ddd;border-bottom:none;}","methods":{"SetHeader":[{"odd":{"L":{"content":"Розклад уроків","font-size":8,"color":"#333333"},"C":{"content":"За період з  09-02-2026  по  15-02-2026","font-size":8,"color":"#333333"},"R":{"content":"Згенеровано: 13-02-2026 22:08","font-size":8,"color":"#333333"}},"even":{"L":{"content":"Розклад уроків","font-size":8,"color":"#333333"},"C":{"content":"За період з  09-02-2026  по  15-02-2026","font-size":8,"color":"#333333"},"R":{"content":"Згенеровано: 13-02-2026 22:08","font-size":8,"color":"#333333"}}}],"SetFooter":[{"odd":{"L":{"content":"© ","font-size":8,"font-style":"B","color":"#999999"},"R":{"content":"[ {PAGENO}/{nb} ]","font-size":10,"font-style":"B","font-family":"serif","color":"#333333"},"line":true},"even":{"L":{"content":"© ","font-size":8,"font-style":"B","color":"#999999"},"R":{"content":"[ {PAGENO}/{nb} ]","font-size":10,"font-style":"B","font-family":"serif","color":"#333333"},"line":true}}]},"options":{"title":"Розклад уроків","subject":"PDF export generated by kartik-v/yii2-grid extension","keywords":"krajee, grid, export, yii2-grid, pdf"},"contentBefore":"","contentAfter":""}};
+var kvGridInit_913ae242=function(){
+jQuery('#wm5 .export-html').gridexport(kvGridExp_2a32eedf);jQuery('#wm5 .export-xls').gridexport(kvGridExp_9b485e6c);jQuery('#wm5 .export-pdf').gridexport(kvGridExp_fd13ad6c);jQuery('#wm5-container').resizableColumns('destroy').resizableColumns({"store":null,"resizeFromBody":false});
+};
+kvGridInit_913ae242();
+jQuery('#wm5').yiiGridView({"filterUrl":"\/index.php?r=lesson%2Findex\u0026LessonSearch%5BTEACHER_ID%5D=65\u0026order_lesson=1","filterSelector":"#wm5-filters input, #wm5-filters select","filterOnFocusOut":true});
+jQuery.fn.kvDatepicker.dates={};
+if (jQuery('#lessonsearch-lesson_date').data('kvDatepicker')) { jQuery('#lessonsearch-lesson_date').kvDatepicker('destroy'); }
+jQuery('#lessonsearch-lesson_date-kvdate').kvDatepicker(kvDatepicker_06490258);
+
+initDPRemove('lessonsearch-lesson_date');
+initDPAddon('lessonsearch-lesson_date');
+if (jQuery('#lessonsearch-lesson_num').data('select2')) { jQuery('#lessonsearch-lesson_num').select2('destroy'); }
+jQuery.when(jQuery('#lessonsearch-lesson_num').select2(select2_7c9b4e86)).done(initS2Loading('lessonsearch-lesson_num','s2options_3267a624'));
+
+if (jQuery('#lessonsearch-klass_id').data('select2')) { jQuery('#lessonsearch-klass_id').select2('destroy'); }
+jQuery.when(jQuery('#lessonsearch-klass_id').select2(select2_c1ae7478)).done(initS2Loading('lessonsearch-klass_id','s2options_669e5a8e'));
+
+if (jQuery('#lessonsearch-predmet_id').data('select2')) { jQuery('#lessonsearch-predmet_id').select2('destroy'); }
+jQuery.when(jQuery('#lessonsearch-predmet_id').select2(select2_61e7e3e7)).done(initS2Loading('lessonsearch-predmet_id','s2options_3267a624'));
+
+if (jQuery('#lessonsearch-teacher_id').data('select2')) { jQuery('#lessonsearch-teacher_id').select2('destroy'); }
+jQuery.when(jQuery('#lessonsearch-teacher_id').select2(select2_f7b2e0a7)).done(initS2Loading('lessonsearch-teacher_id','s2options_3267a624'));
+
+if (jQuery('#lessonsearch-kabinet_id').data('select2')) { jQuery('#lessonsearch-kabinet_id').select2('destroy'); }
+jQuery.when(jQuery('#lessonsearch-kabinet_id').select2(select2_4a0aacdd)).done(initS2Loading('lessonsearch-kabinet_id','s2options_3267a624'));
+
+if (jQuery('#w4').data('kvDatepicker')) { jQuery('#w4').kvDatepicker('destroy'); }
+jQuery('#w4-kvdate').kvDatepicker(kvDatepicker_b5fd2db2);
+
+initDPRemove('w4');
+initDPAddon('w4');
+var $el=jQuery("#copy_form_1 .kv-hint-special");if($el.length){$el.each(function(){$(this).activeFieldHint()});}
+if (jQuery('#scheduleTplChoose').data('select2')) { jQuery('#scheduleTplChoose').select2('destroy'); }
+jQuery.when(jQuery('#scheduleTplChoose').select2(select2_ea31679c)).done(initS2Loading('scheduleTplChoose','s2options_3267a624'));
+
+if (jQuery('#scheduleTplBranch').data('select2')) { jQuery('#scheduleTplBranch').select2('destroy'); }
+jQuery.when(jQuery('#scheduleTplBranch').select2(select2_ea31679c)).done(initS2Loading('scheduleTplBranch','s2options_3267a624'));
+
+jQuery('#copy_form_1').yiiActiveForm([], []);
+var $el=jQuery("#copy_form_2 .kv-hint-special");if($el.length){$el.each(function(){$(this).activeFieldHint()});}
+if (jQuery('#scheduleTplChoose1').data('select2')) { jQuery('#scheduleTplChoose1').select2('destroy'); }
+jQuery.when(jQuery('#scheduleTplChoose1').select2(select2_0b89ef7d)).done(initS2Loading('scheduleTplChoose1','s2options_3267a624'));
+
+if (jQuery('#scheduleImportReplacementsAction').data('select2')) { jQuery('#scheduleImportReplacementsAction').select2('destroy'); }
+jQuery.when(jQuery('#scheduleImportReplacementsAction').select2(select2_2db6ce4f)).done(initS2Loading('scheduleImportReplacementsAction','s2options_3267a624'));
+
+if (jQuery('#allowMultipleSchedulesCheckbox').data('select2')) { jQuery('#allowMultipleSchedulesCheckbox').select2('destroy'); }
+jQuery.when(jQuery('#allowMultipleSchedulesCheckbox').select2(select2_b4b53d3e)).done(initS2Loading('allowMultipleSchedulesCheckbox','s2options_3267a624'));
+
+if (jQuery('#allClasses').data('select2')) { jQuery('#allClasses').select2('destroy'); }
+jQuery.when(jQuery('#allClasses').select2(select2_b4b53d3e)).done(initS2Loading('allClasses','s2options_3267a624'));
+
+if (jQuery('#selectedClasses').data('select2')) { jQuery('#selectedClasses').select2('destroy'); }
+jQuery.when(jQuery('#selectedClasses').select2(select2_bdd6053c)).done(initS2Loading('selectedClasses','s2options_669e5a8e'));
+
+if (jQuery('#weekModeSelect').data('select2')) { jQuery('#weekModeSelect').select2('destroy'); }
+jQuery.when(jQuery('#weekModeSelect').select2(select2_b4b53d3e)).done(initS2Loading('weekModeSelect','s2options_3267a624'));
+
+jQuery('#copy_form_2').yiiActiveForm([], []);
+if (jQuery('#w5').data('kvDatepicker')) { jQuery('#w5').kvDatepicker('destroy'); }
+jQuery('#w5-kvdate').kvDatepicker(kvDatepicker_b5fd2db2);
+
+initDPRemove('w5');
+initDPAddon('w5');
+if (jQuery('#printSimpleClassesSeparateParallels').data('select2')) { jQuery('#printSimpleClassesSeparateParallels').select2('destroy'); }
+jQuery.when(jQuery('#printSimpleClassesSeparateParallels').select2(select2_b4b53d3e)).done(initS2Loading('printSimpleClassesSeparateParallels','s2options_3267a624'));
+
+if (jQuery('#printSimpleClassesGroupRelations').data('select2')) { jQuery('#printSimpleClassesGroupRelations').select2('destroy'); }
+jQuery.when(jQuery('#printSimpleClassesGroupRelations').select2(select2_b4b53d3e)).done(initS2Loading('printSimpleClassesGroupRelations','s2options_3267a624'));
+
+if (jQuery('#printSimpleClassesAbbreviations').data('select2')) { jQuery('#printSimpleClassesAbbreviations').select2('destroy'); }
+jQuery.when(jQuery('#printSimpleClassesAbbreviations').select2(select2_b4b53d3e)).done(initS2Loading('printSimpleClassesAbbreviations','s2options_3267a624'));
+
+if (jQuery('#printSimpleClassesClassRooms').data('select2')) { jQuery('#printSimpleClassesClassRooms').select2('destroy'); }
+jQuery.when(jQuery('#printSimpleClassesClassRooms').select2(select2_b4b53d3e)).done(initS2Loading('printSimpleClassesClassRooms','s2options_3267a624'));
+
+var $el=jQuery("#w6 .kv-hint-special");if($el.length){$el.each(function(){$(this).activeFieldHint()});}
+if (jQuery('#lessonmassreplacement-datefrom').data('kvDatepicker')) { jQuery('#lessonmassreplacement-datefrom').kvDatepicker('destroy'); }
+jQuery('#lessonmassreplacement-datefrom-kvdate').kvDatepicker(kvDatepicker_27fac8fa);
+
+initDPAddon('lessonmassreplacement-datefrom');
+if (jQuery('#lessonmassreplacement-dateto').data('kvDatepicker')) { jQuery('#lessonmassreplacement-dateto').kvDatepicker('destroy'); }
+jQuery('#lessonmassreplacement-dateto-kvdate').kvDatepicker(kvDatepicker_27fac8fa);
+
+initDPAddon('lessonmassreplacement-dateto');
+if (jQuery('#lessonmassreplacement-classid').data('select2')) { jQuery('#lessonmassreplacement-classid').select2('destroy'); }
+jQuery.when(jQuery('#lessonmassreplacement-classid').select2(select2_878cdf7d)).done(initS2Loading('lessonmassreplacement-classid','s2options_3267a624'));
+
+if (jQuery('#lessonmassreplacement-journalid').data('depdrop')) { jQuery('#lessonmassreplacement-journalid').depdrop('destroy'); }
+jQuery('#lessonmassreplacement-journalid').depdrop(depdrop_e987150a);
+
+if (jQuery('#lessonmassreplacement-journalid').data('select2')) { jQuery('#lessonmassreplacement-journalid').select2('destroy'); }
+jQuery.when(jQuery('#lessonmassreplacement-journalid').select2(select2_8f1b3329)).done(initS2Loading('lessonmassreplacement-journalid','s2options_3267a624'));
+
+initDepdropS2('lessonmassreplacement-journalid','Loading ...');
+var lessonmassreplacement_reason_data_1 = new Bloodhound({"datumTokenizer":Bloodhound.tokenizers.whitespace,"queryTokenizer":Bloodhound.tokenizers.whitespace,"local":kvTypData_ab3a377b});
+kvInitTA('lessonmassreplacement-reason', typeahead_7864e59a, [{"limit":10,"name":"lessonmassreplacement_reason_data_1","source":lessonmassreplacement_reason_data_1.ttAdapter()}]);
+if (jQuery('#lessonmassreplacement-fromteacherid').data('select2')) { jQuery('#lessonmassreplacement-fromteacherid').select2('destroy'); }
+jQuery.when(jQuery('#lessonmassreplacement-fromteacherid').select2(select2_878cdf7d)).done(initS2Loading('lessonmassreplacement-fromteacherid','s2options_3267a624'));
+
+if (jQuery('#lessonmassreplacement-toteacherid').data('select2')) { jQuery('#lessonmassreplacement-toteacherid').select2('destroy'); }
+jQuery.when(jQuery('#lessonmassreplacement-toteacherid').select2(select2_878cdf7d)).done(initS2Loading('lessonmassreplacement-toteacherid','s2options_3267a624'));
+
+if (jQuery('#lessonmassreplacement-paymenttype').data('select2')) { jQuery('#lessonmassreplacement-paymenttype').select2('destroy'); }
+jQuery.when(jQuery('#lessonmassreplacement-paymenttype').select2(select2_3911df10)).done(initS2Loading('lessonmassreplacement-paymenttype','s2options_3267a624'));
+
+jQuery('#w6').yiiActiveForm([{"id":"lessonmassreplacement-datefrom","name":"dateFrom","container":".field-lessonmassreplacement-datefrom","input":"#lessonmassreplacement-datefrom","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необхідно заповнити \u0022Початкова дата\u0022."});}},{"id":"lessonmassreplacement-dateto","name":"dateTo","container":".field-lessonmassreplacement-dateto","input":"#lessonmassreplacement-dateto","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необхідно заповнити \u0022Кінцева дата\u0022."});}},{"id":"lessonmassreplacement-classid","name":"classID","container":".field-lessonmassreplacement-classid","input":"#lessonmassreplacement-classid","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необхідно заповнити \u0022Група\u0022."});yii.validation.number(value, messages, {"pattern":/^[+-]?\d+$/,"message":"Значення \u0022Група\u0022 має бути цілим числом.","skipOnEmpty":1});}},{"id":"lessonmassreplacement-reason","name":"reason","container":".field-lessonmassreplacement-reason","input":"#lessonmassreplacement-reason","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.string(value, messages, {"message":"Значення \u0022Причина відсутності основного вчителя\u0022 має бути текстовим рядком.","max":255,"tooLong":"Значення \u0022Причина відсутності основного вчителя\u0022 повинно містити максимум 255 символів.","skipOnEmpty":1});}},{"id":"lessonmassreplacement-fromteacherid","name":"fromTeacherID","container":".field-lessonmassreplacement-fromteacherid","input":"#lessonmassreplacement-fromteacherid","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необхідно заповнити \u0022Викладач, якого замінили\u0022."});yii.validation.number(value, messages, {"pattern":/^[+-]?\d+$/,"message":"Значення \u0022Викладач, якого замінили\u0022 має бути цілим числом.","skipOnEmpty":1});}},{"id":"lessonmassreplacement-toteacherid","name":"toTeacherID","container":".field-lessonmassreplacement-toteacherid","input":"#lessonmassreplacement-toteacherid","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необхідно заповнити \u0022Викладач, який замінив\u0022."});yii.validation.number(value, messages, {"pattern":/^[+-]?\d+$/,"message":"Значення \u0022Викладач, який замінив\u0022 має бути цілим числом.","skipOnEmpty":1});}},{"id":"lessonmassreplacement-paymenttype","name":"paymentType","container":".field-lessonmassreplacement-paymenttype","input":"#lessonmassreplacement-paymenttype","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"Необхідно заповнити \u0022Тип оплати\u0022."});yii.validation.range(value, messages, {"range":["0","1","2","3"],"not":false,"message":"Значення \u0022Тип оплати\u0022 не вірне.","skipOnEmpty":1});}},{"id":"lessonmassreplacement-isunion","name":"isUnion","container":".field-lessonmassreplacement-isunion","input":"#lessonmassreplacement-isunion","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.boolean(value, messages, {"trueValue":"1","falseValue":"0","message":"Значення \u0022Обʼєднання підгруп\u0022 має дорівнювати \u00221\u0022 або \u00220\u0022.","skipOnEmpty":1});}},{"id":"massIsRegular","name":"isRegular","container":".field-massIsRegular","input":"#massIsRegular","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.boolean(value, messages, {"trueValue":"1","falseValue":"0","message":"Значення \u0022Постійна заміна\u0022 має дорівнювати \u00221\u0022 або \u00220\u0022.","skipOnEmpty":1});}},{"id":"massIsEditingAllowed","name":"isEditingAllowed","container":".field-massIsEditingAllowed","input":"#massIsEditingAllowed","error":".help-block.help-block-error","validate":function (attribute, value, messages, deferred, $form) {yii.validation.boolean(value, messages, {"trueValue":"1","falseValue":"0","message":"Значення \u0022Дозволити редагувати уроки\u0022 має дорівнювати \u00221\u0022 або \u00220\u0022.","skipOnEmpty":1});}}], []);
+if (jQuery('#w7').data('select2')) { jQuery('#w7').select2('destroy'); }
+jQuery.when(jQuery('#w7').select2(select2_b4b53d3e)).done(initS2Loading('w7','s2options_3267a624'));
+
+
+$('#massIsEditingAllowed').attr('disabled', true)
+
+$('#massIsRegular').on('change', function () {
+    if (this.checked) {
+        $('#massIsEditingAllowed').removeAttr('disabled')
+    } else {
+        $('#massIsEditingAllowed').attr('disabled', true).prop('checked', false)
+    }
+})
+
+$(document).ready(function() {
+    
+    $('#branch_select').on('change', function(){
+	location.href = window.location.href + '&branch_id=' + $(this).val();
+    });
+   
+    var modalWeek = $('#modalWeekSend');
+    var labelSuccesW = $('#allOkW').hide();
+    var labelFrontW = $('#emptyRowW').hide();
+    var labelBackendW = $('#serverErrorW').hide();
+	$(modalWeek).on('click',function() {
+	  $.get(
+              'index.php?r=lesson/copy2dateweek',
+              {
+                  dateStart: '2026-02-09',
+                  dateEnd: '2026-02-15',
+                  id: null,
+                  count:$('[name=copyCountWeek]').val(),
+                  date: $('[name=cop2dateweek]').val(),
+                  ignoreCollision: $('#copy2dateColisionWeek').prop("checked")
+              },
+              // жду обьект вид {success: true/false, error:'текст ошибки если что то не так'}
+              function(response) {
+                if (response.success){
+                  labelSuccesW.fadeIn(); 
+                  labelSuccesW.text('Предмети успішно скопійовано.');   
+                  setTimeout(function() {
+                    location.reload(); 
+                  },3000);
+                }else{
+                    labelBackendW.fadeIn(); 
+                    labelBackendW.text(response.error); 
+                }
+              }
+          );
+	});
+	
+    var deleteBtn = $('.deleteSelectedRow');
+    deleteBtn.on("click",function(event){
+        event.preventDefault();
+        
+        const isSafe = $(this).attr('data-safe') === '1'
+        const isDelete = confirm(isSafe ? "Ви дійсно хочете видалити обрані записи безпечно?" : "Ви дійсно хочете видалити обрані записи? Зверніть увагу! Навчальні заняття, а також всі оцінки буде видалено без можливості відновлення.");
+        
+        if (isDelete) {
+            const url = $(this).find('a').attr('href');
+            const list = $('#wm5').yiiGridView('getSelectedRows');
+            $(this).closest('.kv-panel-before').find('button').attr('disabled', true)
+             
+            $.post(url, {
+                dateStart: '2026-02-09',
+                dateEnd: '2026-02-15',
+                klass_id: null,
+                lesson_id : list
+            }).done(function() {
+                location.reload();
+            })
+        }
+    });
+    
+    var labelSucces = $('#allOk').hide();
+    var labelFront = $('#emptyRow').hide();
+    var labelBackend = $('#serverError').hide();
+    var copyToDatePicker = $('input[name=cop2date]');
+    var copyToDateControllGroup = $('#copToDateRowControllgroup'); 
+    var copyToDate = $('.copToDateRowSend');
+    
+    copyToDateControllGroup.hide();
+    
+    copyToDatePicker.change(function() {
+      if (copyToDatePicker.val() !== ''){
+          copyToDateControllGroup.show(); 
+      }
+    });
+    
+    copyToDate.on("click",function(event) {
+      event.preventDefault(); 
+      labelSucces.hide(); 
+      labelFront.hide(); 
+      labelBackend.hide(); 
+      
+      var list = $('#wm5').yiiGridView('getSelectedRows');
+      var date = copyToDatePicker.val();
+      // var ignoreColision = $('#copy2dateColision').prop("checked");
+      
+      if(list.length === 0){
+          labelFront.fadeIn(); 
+          labelFront.text('Ви не обрали жодного уроку!')
+      }else{
+          $.get(
+              'index.php?r=lesson/copy2date',
+              {
+                  lesson: list,
+                  date: date,
+                  ignoreCollision: $('#copy2dateColision').prop("checked")
+              },
+              // жду обьект вид {success: true/false, error:'текст ошибки если что то не так'}
+              function(response) {
+                if (response.success){
+                  labelSucces.fadeIn(); 
+                  labelSucces.text('Предмети успішно скопійовано.');   
+                  setTimeout(function() {
+                    location.reload(); 
+                  },3000);
+                }else{
+                    labelBackend.fadeIn(); 
+                    labelBackend.text(response.error); 
+                }
+              }
+          );
+      }
+    }); 
+    
+    var form = $('#w0'); 
+    form.change(function(){
+        form.submit(); 
+    });   
+    
+    $('#scheduleTplChoose').on('change',function() {
+        if($(this).val() == 0) {
+            $('#scheduleTplName').show();
+        } else {
+            $('#scheduleTplName').hide();
+        }
+    });
+    
+    $('#create_from_lessons').on('click',function(evt) {
+        evt.preventDefault();
+        $('#loading_1').show();
+        $('#form_1').hide();
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        $.post("/index.php?r=schedule%2Fcreate-from-lessons",{
+            date_from: $('#date_from_1').val(),
+            date_to: $('#date_to_1').val(),
+            template: $('#scheduleTplChoose').val(),
+            tplTitle: $('#scheduleTplName').val(),
+            tplBranch: $('#scheduleTplBranch').val(),
+            _csrf: csrfToken
+        }, function(data) {
+            if(data === 'OK') {
+                $('#success_1').show();
+                $('#loading_1').hide();
+            } else {
+                $('#error_1').show();
+                $('#loading_1').hide();
+            }
+        });
+    });
+    
+    $('#create_from_schedule').on('click',function(event) {
+        event.preventDefault();
+        let hasErrors = false;
+        
+        if ($('#scheduleTplChoose1').val() === '') {
+            $('#scheduleTplChoose1').parent().addClass('has-error');
+            hasErrors = true;
+        } else {
+            $('#scheduleTplChoose1').parent().removeClass('has-error');
+        }
+        
+        if ($('#scheduleImportReplacementsAction').val() === '') {
+            $('#scheduleImportReplacementsAction').parent().addClass('has-error');
+            hasErrors = true;
+        } else {
+            $('#scheduleImportReplacementsAction').parent().removeClass('has-error');
+        }
+
+        if ($('#allClasses').val() === '0' && !$('#selectedClasses').val()) {
+            $('#selectedClasses').parents('.form-group').addClass('has-error');
+            hasErrors = true
+        } else {
+            $('#selectedClasses').parents('.form-group').removeClass('has-error');
+        }
+        
+        if (hasErrors) return;
+        
+        $('#loading_2').show();
+        $('#form_2').hide();
+        $('#fromScheduleFooter').hide();
+        $('#create_from_schedule').hide();
+        var csrfToken = $('meta[name="csrf-token"]').attr("content");
+        $.post("/index.php?r=schedule%2Fcreate-from-schedule",{
+            date_from: $('#date_from_2').val(),
+            date_to: $('#date_to_2').val(),
+            template: $('#scheduleTplChoose1').val(),
+            replacements_action: $('#scheduleImportReplacementsAction').val(),
+            allow_multiple_schedules: $('#allowMultipleSchedulesCheckbox').val(),
+            selectedClasses: $('#selectedClasses').val(),
+            weekdays: $('[name="weekdays[]"]:checked').map(function() { return $(this).val() }).get().join(','),
+            _csrf: csrfToken
+        }, function(data) {
+            $('#fromScheduleFooter').show();
+            $('#create_from_schedule_success').show();
+            if(data === 'OK') {
+                $('#success_2').show();
+                $('#loading_2').hide();
+            } else {
+                if(data === 'ERROR_WEEK_NOT_EMPTY') {
+                    $('#error_2_2').show();
+                    $('#loading_2').hide();
+                }
+                else {
+                    $('#error_2').show();
+                    $('#loading_2').hide();
+                }
+            }
+        });
+//        return false;
+    });
+    
+    var aHref = '';
+    
+    $('.print_view_link').on('click', function() {
+        $('#modalBranches').modal('show');
+        aHref = $(this).attr('href');
+        return false;
+    });
+    
+    $('#branch_print_selected_button').on('click', function(){
+        var branch_id = $('#branch_print_select').val();
+        aHref = aHref + '&branch_id=' + branch_id;
+        window.open(aHref);
+        $('#modalBranches').modal('hide');
+    });
+    
+});
+
+$('#printClassesSimpleButton').on('click', function (e) {
+    e.preventDefault();
+    $('#printSimpleClassesModal').modal('show');
+});
+
+$('#printSimpleClasses').on('click', function () {
+    let url = $(this).attr('data-base');
+    let classes = $('#lessonsearch-klass_id').val();
+    if (classes !== null) url += '&classes=' + classes.join(',');
+    url += '&separateParallels=' +  $('#printSimpleClassesSeparateParallels').val()
+    url += '&groupRelations=' +  $('#printSimpleClassesGroupRelations').val()
+    url += '&labelAbbreviations=' +  $('#printSimpleClassesAbbreviations').val()
+    url += '&printClassRooms=' +  $('#printSimpleClassesClassRooms').val()
+    url += '&scheduleMode=' + 'all'
+    
+    $('#printSimpleClassesModal').modal('hide');
+
+    window.open(url, '_blank');
+});
+
+$('#allClasses').change(function () {
+    $('.selected-classes-wrapper').toggle()
+})
+
+$('#weekModeSelect').change(function () {
+    $('.selected-mode-wrapper').toggle()
+    $('[name="weekdays[]"]').prop('checked', true)
+})
+
+$('.base-print-modal-button').on('click', function (e) {
+    e.preventDefault()
+    const modal = $('#basePrintModal')
+    const form = $('#basePrintForm')
+    form.attr('action', $(this).attr('href'))
+    modal.modal('show')
+})
+
+$('#basePrintForm').on('submit', function (e) {
+    e.preventDefault()
+    const params = $(this).serialize()
+    const href = $(this).attr('action') + '&' + params
+    window.open(href, '_blank')
+})
+
+$('#lessonmassreplacement-journalid').on('change', function () {
+    const option = $(this).find('option[value="' + $(this).val() + '"]')
+    const teacherID = option.attr('data-teacher_id')
+    $('#lessonmassreplacement-fromteacherid').val(teacherID).change()
+})
+
+
+$('[data-toggle="tooltip"]').tooltip();
+
+});</script>	<script type="text/javascript">
+        function getCookie(name) {
+            var cookie = " " + document.cookie;
+            var search = " " + name + "=";
+            var setStr = null;
+            var offset = 0;
+            var end = 0;
+            if (cookie.length > 0) {
+                offset = cookie.indexOf(search);
+                if (offset != -1) {
+                    offset += search.length;
+                    end = cookie.indexOf(";", offset)
+                    if (end == -1) {
+                        end = cookie.length;
+                    }
+                    setStr = unescape(cookie.substring(offset, end));
+                }
+            }
+            return(setStr);
+        }
+
+        function setCookie (name, value, expires, path, domain, secure) {
+            document.cookie = name + "=" + escape(value) +
+                ((expires) ? "; expires=" + expires : "") +
+                ((path) ? "; path=" + path : "") +
+                ((domain) ? "; domain=" + domain : "") +
+                ((secure) ? "; secure" : "");
+        }
+
+        $('#hide-sidebar').on('click', function(){
+            var hideSidebar = getCookie('hideSidebar');
+            if ((hideSidebar === null) || (hideSidebar === 'false') || (hideSidebar === undefined)) {
+                setCookie('hideSidebar', true);
+            } else {
+                setCookie('hideSidebar', false);
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+    </body>
+    </html>
+    
