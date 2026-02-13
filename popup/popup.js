@@ -58,6 +58,54 @@ function bindEvents() {
   on('btn-uncheck-all', 'click', () => toggleAllLessons(false));
   on('btn-find-available', 'click', findAvailableSlots);
   on('btn-copy-result', 'click', copyResult);
+
+  // Cascading reset: changing an earlier step hides all later steps
+  document.getElementById('report-month')?.addEventListener('change', () => {
+    resetFrom('filters');
+  });
+  document.getElementById('filter-groups')?.addEventListener('change', () => {
+    resetFrom('lessons');
+  });
+  document.getElementById('filter-subjects')?.addEventListener('change', () => {
+    resetFrom('lessons');
+  });
+  document.getElementById('lessons-list')?.addEventListener('change', () => {
+    resetFrom('result');
+  });
+}
+
+/**
+ * Hide cards from a given step onward and clear their state.
+ * Steps: 'filters' → 'lessons' → 'result'
+ */
+function resetFrom(step) {
+  const steps = ['filters', 'lessons', 'result'];
+  const idx = steps.indexOf(step);
+  if (idx < 0) return;
+
+  for (let i = idx; i < steps.length; i++) {
+    const cardId = steps[i] === 'filters' ? 'filters-card'
+      : steps[i] === 'lessons' ? 'lessons-card'
+      : 'result-card';
+    document.getElementById(cardId)?.classList.add('hidden');
+  }
+
+  if (idx <= 0) {
+    // Reset filters step
+    fetchedEntries = [];
+    filteredLessons = [];
+  }
+  if (idx <= 1) {
+    // Reset lessons step
+    filteredLessons = [];
+    const list = document.getElementById('lessons-list');
+    if (list) list.innerHTML = '';
+  }
+  if (idx <= 2) {
+    // Reset result step
+    const output = document.getElementById('result-output');
+    if (output) output.value = '';
+  }
 }
 
 /* ========== 1. Fetch month schedule ========== */

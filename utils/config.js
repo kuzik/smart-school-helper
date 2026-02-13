@@ -43,21 +43,17 @@ const SmartSchoolConfig = (() => {
     { number: 4, start: '12:40', end: '14:00' },
     { number: 5, start: '14:10', end: '15:30' },
     { number: 6, start: '15:40', end: '17:00' },
-    { number: 7, start: '17:10', end: '18:30' },
-    { number: 8, start: '18:40', end: '20:00' },
   ];
 
   /**
    * Day name mapping (Ukrainian).
    */
   const DAY_NAMES = {
-    0: 'Неділя',
     1: 'Понеділок',
     2: 'Вівторок',
     3: 'Середа',
     4: 'Четвер',
     5: 'Пʼятниця',
-    6: 'Субота',
   };
 
   /* ---------- Helpers ---------- */
