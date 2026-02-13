@@ -277,13 +277,6 @@ const ScheduleParser = (() => {
   }
 
   /**
-   * Extract rooms from #lessonsearch-kabinet_id select.
-   */
-  function parseRoomList(root) {
-    return parseSelectById(root || document, 'lessonsearch-kabinet_id');
-  }
-
-  /**
    * Extract lesson numbers from #lessonsearch-lesson_num select.
    */
   function parseLessonNumList(root) {
@@ -349,7 +342,6 @@ const ScheduleParser = (() => {
     parseGroupList,
     parseTeacherList,
     parseSubjectList,
-    parseRoomList,
     parseLessonNumList,
     parseSelectById,
     parseDateFromText,

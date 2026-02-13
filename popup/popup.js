@@ -1,17 +1,26 @@
 /**
  * Smart School Helper — Popup Script
  *
- * Controls the popup UI: tab switching, config loading/saving,
- * triggering schedule parsing and report generation via background messages.
+ * Report tab workflow:
+ *  1. Select month → fetch all lectures for current user
+ *  2. Populate multiselects: unique groups & unique subjects
+ *  3. Apply filter → show lesson list with checkboxes
+ *  4. For checked lessons → find closest available slots
+ *  5. Print result in textarea
  */
 
 document.addEventListener('DOMContentLoaded', init);
+
+/* ========== State ========== */
+
+let fetchedEntries = [];   // all schedule entries for the month
+let filteredLessons = [];  // entries visible in the lesson list
 
 /* ========== Initialization ========== */
 
 async function init() {
   setupTabs();
-  await loadConfig();
+  prefillMonth();
   bindEvents();
 }
 
@@ -31,166 +40,188 @@ function setupTabs() {
   });
 }
 
-/* ========== Config ========== */
+/* ========== Pre-fill current month ========== */
 
-async function loadConfig() {
-  const config = await sendMessage('GET_CONFIG');
-  if (!config) return;
-
-  setVal('teacher-name', config.teacherName);
-  setVal('default-teacher-id', config.defaultTeacherId);
-  setVal('default-predmet-id', config.defaultPredmetId);
-  setVal('default-kabinet-id', config.defaultKabinetId);
-  setVal('subgroup-label', config.subgroupLabel);
-  setVal('semester-start', config.semesterStart);
-  setVal('semester-end', config.semesterEnd);
-
-  // Pre-fill date range from semester if available
-  if (config.semesterStart) setVal('date-from', config.semesterStart);
-  if (config.semesterEnd) setVal('date-to', config.semesterEnd);
-
-  // Pre-fill IDs from defaults
-  if (config.defaultTeacherId) setVal('teacher-id', config.defaultTeacherId);
-  if (config.defaultPredmetId) setVal('predmet-id', config.defaultPredmetId);
-  if (config.defaultKabinetId) setVal('kabinet-id', config.defaultKabinetId);
-}
-
-async function saveConfig() {
-  const config = {
-    teacherName: getVal('teacher-name'),
-    defaultTeacherId: getVal('default-teacher-id'),
-    defaultPredmetId: getVal('default-predmet-id'),
-    defaultKabinetId: getVal('default-kabinet-id'),
-    subgroupLabel: getVal('subgroup-label'),
-    semesterStart: getVal('semester-start'),
-    semesterEnd: getVal('semester-end'),
-  };
-  const result = await sendMessage('SAVE_CONFIG', config);
-  showStatus(result?.success ? 'Налаштування збережено!' : 'Помилка збереження', result?.success);
+function prefillMonth() {
+  const now = new Date();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const sel = document.getElementById('report-month');
+  if (sel) sel.value = mm;
 }
 
 /* ========== Event Binding ========== */
 
 function bindEvents() {
-  // Settings
-  on('btn-save-config', 'click', saveConfig);
-  on('btn-clear-cache', 'click', clearCache);
-
-  // Schedule
-  on('btn-load-filters', 'click', loadFiltersFromPage);
-  on('btn-parse', 'click', parseSchedule);
-  on('btn-find-slots', 'click', findFreeSlots);
-
-  // Report
-  on('btn-generate', 'click', generateReport);
+  on('btn-fetch-month', 'click', fetchMonthSchedule);
+  on('btn-apply-filters', 'click', applyFilters);
+  on('btn-check-all', 'click', () => toggleAllLessons(true));
+  on('btn-uncheck-all', 'click', () => toggleAllLessons(false));
+  on('btn-find-available', 'click', findAvailableSlots);
+  on('btn-copy-result', 'click', copyResult);
 }
 
-/* ========== Schedule Actions ========== */
+/* ========== 1. Fetch month schedule ========== */
 
-/**
- * Load filter options (groups, teachers, subjects, rooms) from the active page.
- */
-async function loadFiltersFromPage() {
-  const btn = document.getElementById('btn-load-filters');
+async function fetchMonthSchedule() {
+  const btn = document.getElementById('btn-fetch-month');
   btn.disabled = true;
-  btn.textContent = '⏳ Завантаження...';
+  btn.textContent = '⏳ Завантаження…';
 
   try {
-    const result = await sendMessage('LOAD_FILTERS');
+    const month = getVal('report-month');
+    const year = new Date().getFullYear();
 
-    if (result?.error) {
-      showStatus(result.error, false);
+    const result = await sendMessage('FETCH_MONTH_SCHEDULE', { month, year });
+
+    if (!result || result.error) {
+      showStatus(result?.error || 'Не вдалося завантажити розклад.', false);
       return;
     }
 
-    // Populate dropdowns
-    populateSelect('my-group', result.groups || [], getVal('my-group'));
-    populateSelect('target-group', result.groups || [], getVal('target-group'));
-    populateSelect('teacher-id', result.teachers || [], getVal('teacher-id'));
-    populateSelect('predmet-id', result.subjects || [], getVal('predmet-id'));
-    populateSelect('kabinet-id', result.rooms || [], getVal('kabinet-id'));
+    fetchedEntries = result.entries || [];
 
-    showStatus(`Завантажено: ${(result.groups||[]).length} груп, ${(result.teachers||[]).length} викладачів`, true);
+    if (fetchedEntries.length === 0) {
+      showStatus('Занять за цей місяць не знайдено.', false);
+      return;
+    }
+
+    // Extract unique groups and subjects
+    const groups = uniqueBy(fetchedEntries, 'group');
+    const subjects = uniqueBy(fetchedEntries, 'subject');
+
+    populateMultiSelect('filter-groups', groups);
+    populateMultiSelect('filter-subjects', subjects);
+
+    document.getElementById('filters-card').classList.remove('hidden');
+    document.getElementById('lessons-card').classList.add('hidden');
+    document.getElementById('result-card').classList.add('hidden');
+
+    showStatus(`Завантажено ${fetchedEntries.length} занять. Оберіть фільтри.`, true);
   } catch (err) {
     showStatus(`Помилка: ${err.message}`, false);
   } finally {
     btn.disabled = false;
-    btn.textContent = '🔄 Завантажити фільтри зі сторінки';
+    btn.textContent = '🔍 Завантажити розклад';
   }
 }
 
-/**
- * Populate a <select> with options.
- */
-function populateSelect(selectId, items, currentValue) {
-  const select = document.getElementById(selectId);
-  if (!select) return;
+/* ========== 2. Populate multiselect ========== */
 
-  // Preserve the first "empty" option
-  const firstOption = select.querySelector('option');
-  select.innerHTML = '';
-  if (firstOption) select.appendChild(firstOption);
-
-  items.forEach((item) => {
+function populateMultiSelect(id, items) {
+  const sel = document.getElementById(id);
+  if (!sel) return;
+  sel.innerHTML = '';
+  items.forEach((name) => {
     const opt = document.createElement('option');
-    opt.value = item.id;
-    opt.textContent = `${item.name} (${item.id})`;
-    if (item.id === currentValue) opt.selected = true;
-    select.appendChild(opt);
+    opt.value = name;
+    opt.textContent = name;
+    opt.selected = true; // select all by default
+    sel.appendChild(opt);
   });
 }
 
-async function parseSchedule() {
-  const btn = document.getElementById('btn-parse');
-  btn.disabled = true;
-  btn.textContent = '⏳ Зчитування...';
+/* ========== 3. Apply filters → show lessons ========== */
 
-  try {
-    const payload = {
-      myGroupId: getVal('my-group'),
-      targetGroupId: getVal('target-group'),
-      teacherId: getVal('teacher-id'),
-      predmetId: getVal('predmet-id'),
-      kabinetId: getVal('kabinet-id'),
-      dateFrom: getVal('date-from'),
-      dateTo: getVal('date-to'),
-    };
+async function applyFilters() {
+  const selGroups = getSelectedValues('filter-groups');
+  const selSubjects = getSelectedValues('filter-subjects');
 
-    const result = await sendMessage('PARSE_SCHEDULE', payload);
+  filteredLessons = fetchedEntries.filter((e) =>
+    selGroups.includes(e.group) && selSubjects.includes(e.subject)
+  );
 
-    if (result?.error) {
-      showStatus(result.error, false);
-    } else {
-      document.getElementById('btn-find-slots').disabled = false;
-      showStatus('Розклад зчитано!', true);
-    }
-  } catch (err) {
-    showStatus(`Помилка: ${err.message}`, false);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '🔍 Зчитати розклад';
+  if (filteredLessons.length === 0) {
+    showStatus('Нічого не підходить під обрані фільтри.', false);
+    document.getElementById('lessons-card').classList.add('hidden');
+    return;
   }
+
+  // Show lessons immediately (without topics yet)
+  renderLessons(filteredLessons);
+  document.getElementById('lessons-card').classList.remove('hidden');
+  document.getElementById('result-card').classList.add('hidden');
+
+  // Fetch details (topics) only for the filtered entries
+  const needDetails = filteredLessons.filter((l) => l.lessonId && !l.topic);
+  if (needDetails.length > 0) {
+    showStatus(`Завантаження тем (${needDetails.length})…`, true);
+    const btn = document.getElementById('btn-apply-filters');
+    btn.disabled = true;
+
+    const result = await sendMessage('FETCH_LESSON_DETAILS', { entries: needDetails });
+    btn.disabled = false;
+
+    if (result?.success && result.entries) {
+      // Merge topics back into fetchedEntries (by lessonId)
+      const topicMap = new Map(result.entries.map((e) => [e.lessonId, e.topic]));
+      for (const entry of fetchedEntries) {
+        if (topicMap.has(entry.lessonId)) {
+          entry.topic = topicMap.get(entry.lessonId);
+        }
+      }
+      // Re-render with topics
+      renderLessons(filteredLessons);
+    }
+  }
+
+  showStatus(`Показано ${filteredLessons.length} занять.`, true);
 }
 
-async function findFreeSlots() {
-  const btn = document.getElementById('btn-find-slots');
+function renderLessons(lessons) {
+  const list = document.getElementById('lessons-list');
+  list.innerHTML = lessons.map((l, i) => {
+    const topicLine = l.topic
+      ? `<span class="lesson-topic">${escapeHtml(l.topic)}</span>` : '';
+    return `
+    <label class="lesson-item${topicLine ? ' has-topic' : ''}">
+      <input type="checkbox" data-index="${i}" checked />
+      <span class="lesson-date">${l.date}</span>
+      <span class="lesson-pair">${l.pairNumber} пара</span>
+      <span class="lesson-group">${l.group}</span>
+      <span class="lesson-subject">${l.subject}</span>
+      ${topicLine}
+    </label>`;
+  }).join('');
+}
+
+function toggleAllLessons(checked) {
+  document.querySelectorAll('#lessons-list input[type="checkbox"]')
+    .forEach((cb) => { cb.checked = checked; });
+}
+
+/* ========== 4. Find available slots ========== */
+
+async function findAvailableSlots() {
+  const btn = document.getElementById('btn-find-available');
   btn.disabled = true;
-  btn.textContent = '⏳ Пошук...';
+  btn.textContent = '⏳ Пошук…';
 
   try {
-    const result = await sendMessage('FIND_FREE_SLOTS', {
-      myGroupId: getVal('my-group'),
-      targetGroupId: getVal('target-group'),
-      dateFrom: getVal('date-from'),
-      dateTo: getVal('date-to'),
-    });
+    const checkboxes = document.querySelectorAll('#lessons-list input[type="checkbox"]:checked');
+    const selectedLessons = Array.from(checkboxes).map((cb) => {
+      const idx = parseInt(cb.dataset.index, 10);
+      return filteredLessons[idx];
+    }).filter(Boolean);
 
-    if (result?.error) {
-      showStatus(result.error, false);
+    if (selectedLessons.length === 0) {
+      showStatus('Оберіть хоча б одне заняття.', false);
       return;
     }
 
-    renderSlots(result?.slots || []);
+    const result = await sendMessage('FIND_SLOTS_FOR_LESSONS', {
+      lessons: selectedLessons,
+    });
+
+    if (!result || result.error) {
+      showStatus(result?.error || 'Помилка пошуку вільних пар.', false);
+      return;
+    }
+
+    // Show result textarea
+    const output = document.getElementById('result-output');
+    output.value = result.text || '';
+    document.getElementById('result-card').classList.remove('hidden');
+    showStatus(`Знайдено ${result.slotCount || 0} вільних пар.`, true);
   } catch (err) {
     showStatus(`Помилка: ${err.message}`, false);
   } finally {
@@ -199,79 +230,50 @@ async function findFreeSlots() {
   }
 }
 
-function renderSlots(slots) {
-  const container = document.getElementById('slots-list');
-  const wrapper = document.getElementById('slots-result');
+/* ========== 5. Copy result ========== */
 
-  if (slots.length === 0) {
-    container.innerHTML = '<p class="hint">Вільних пар не знайдено.</p>';
-    wrapper.classList.remove('hidden');
-    return;
-  }
-
-  container.innerHTML = slots.map((slot, i) => `
-    <div class="slot-item">
-      <input type="checkbox" id="slot-${i}" data-index="${i}" checked />
-      <span class="slot-date">${slot.date}</span>
-      <span class="slot-pair">${slot.pairNumber} пара (${slot.timeStart}–${slot.timeEnd})</span>
-    </div>
-  `).join('');
-
-  wrapper.classList.remove('hidden');
-  document.getElementById('btn-generate').disabled = false;
-}
-
-/* ========== Report ========== */
-
-async function generateReport() {
-  const btn = document.getElementById('btn-generate');
-  btn.disabled = true;
-  btn.textContent = '⏳ Генерація...';
-
+async function copyResult() {
+  const text = document.getElementById('result-output')?.value;
+  if (!text) return;
   try {
-    // Gather selected slots
-    const checkboxes = document.querySelectorAll('#slots-list input[type="checkbox"]:checked');
-    const selectedIndexes = Array.from(checkboxes).map((cb) => parseInt(cb.dataset.index, 10));
-
-    const result = await sendMessage('GENERATE_REPORT', {
-      selectedIndexes,
-      discipline: getVal('discipline'),
-      format: getVal('report-format'),
-    });
-
-    if (result?.error) {
-      showStatus(result.error, false);
-      return;
-    }
-
-    // Show preview
-    if (result?.preview) {
-      const preview = document.getElementById('report-preview');
-      preview.textContent = result.preview;
-      preview.classList.remove('hidden');
-    }
-
-    showStatus('Звіт згенеровано!', true);
-  } catch (err) {
-    showStatus(`Помилка: ${err.message}`, false);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '📄 Згенерувати звіт';
+    await navigator.clipboard.writeText(text);
+    showStatus('Скопійовано!', true);
+  } catch {
+    // Fallback
+    document.getElementById('result-output').select();
+    document.execCommand('copy');
+    showStatus('Скопійовано!', true);
   }
-}
-
-/* ========== Cache ========== */
-
-async function clearCache() {
-  const result = await sendMessage('CLEAR_CACHE');
-  showStatus(result?.success ? 'Кеш очищено!' : 'Помилка', result?.success);
 }
 
 /* ========== Helpers ========== */
 
+function uniqueBy(arr, key) {
+  const seen = new Set();
+  return arr.reduce((acc, item) => {
+    const val = item[key];
+    if (val && !seen.has(val)) {
+      seen.add(val);
+      acc.push(val);
+    }
+    return acc;
+  }, []);
+}
+
+function getSelectedValues(id) {
+  const sel = document.getElementById(id);
+  if (!sel) return [];
+  return Array.from(sel.selectedOptions).map((o) => o.value);
+}
+
 function sendMessage(action, payload = {}) {
   return new Promise((resolve) => {
     chrome.runtime.sendMessage({ action, payload }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.warn('[Smart School Helper] sendMessage error:', chrome.runtime.lastError.message);
+        resolve(undefined);
+        return;
+      }
       resolve(response);
     });
   });
@@ -279,12 +281,18 @@ function sendMessage(action, payload = {}) {
 
 function showStatus(text, success = true) {
   const el = document.getElementById('status-msg');
+  if (!el) return;
   el.textContent = text;
   el.className = `status ${success ? 'success' : 'error'}`;
   el.classList.remove('hidden');
-  setTimeout(() => el.classList.add('hidden'), 3000);
+  setTimeout(() => el.classList.add('hidden'), 4000);
 }
 
 function getVal(id) { return document.getElementById(id)?.value ?? ''; }
 function setVal(id, val) { const el = document.getElementById(id); if (el && val) el.value = val; }
 function on(id, event, handler) { document.getElementById(id)?.addEventListener(event, handler); }
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}

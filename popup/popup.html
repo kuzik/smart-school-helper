@@ -14,133 +14,78 @@
 
   <!-- ===== Tabs ===== -->
   <nav class="tabs">
-    <button class="tab active" data-tab="schedule">Розклад</button>
-    <button class="tab" data-tab="report">Звіт</button>
+    <button class="tab active" data-tab="report">Звіт</button>
     <button class="tab" data-tab="settings">Налаштування</button>
   </nav>
 
-  <!-- ===== Tab: Schedule ===== -->
-  <section id="tab-schedule" class="tab-content active">
+  <!-- ===== Tab: Report ===== -->
+  <section id="tab-report" class="tab-content active">
     <div class="card">
-      <h3>Порівняння розкладів</h3>
+      <h3>Звіт по розкладу</h3>
 
-      <label for="my-group">Моя група (KLASS_ID)</label>
-      <select id="my-group" class="input">
-        <option value="">— оберіть групу —</option>
+      <label for="report-month">Місяць</label>
+      <select id="report-month" class="input">
+        <option value="01">Січень</option>
+        <option value="02">Лютий</option>
+        <option value="03">Березень</option>
+        <option value="04">Квітень</option>
+        <option value="05">Травень</option>
+        <option value="06">Червень</option>
+        <option value="07">Липень</option>
+        <option value="08">Серпень</option>
+        <option value="09">Вересень</option>
+        <option value="10">Жовтень</option>
+        <option value="11">Листопад</option>
+        <option value="12">Грудень</option>
       </select>
 
-      <label for="target-group">Група для порівняння (KLASS_ID)</label>
-      <select id="target-group" class="input">
-        <option value="">— оберіть групу —</option>
-      </select>
-
-      <div class="row-2">
-        <div>
-          <label for="teacher-id">Викладач (TEACHER_ID)</label>
-          <select id="teacher-id" class="input">
-            <option value="">— будь-який —</option>
-          </select>
-        </div>
-        <div>
-          <label for="predmet-id">Дисципліна (PREDMET_ID)</label>
-          <select id="predmet-id" class="input">
-            <option value="">— будь-яка —</option>
-          </select>
-        </div>
-      </div>
-
-      <label for="kabinet-id">Кабінет (KABINET_ID)</label>
-      <select id="kabinet-id" class="input">
-        <option value="">— будь-який —</option>
-      </select>
-
-      <div class="row-2">
-        <div>
-          <label for="date-from">Період з</label>
-          <input type="date" id="date-from" class="input" />
-        </div>
-        <div>
-          <label for="date-to">по</label>
-          <input type="date" id="date-to" class="input" />
-        </div>
-      </div>
-
-      <button id="btn-load-filters" class="btn btn-secondary">
-        🔄 Завантажити фільтри зі сторінки
+      <button id="btn-fetch-month" class="btn btn-primary">
+        🔍 Завантажити розклад
       </button>
-      <button id="btn-parse" class="btn btn-primary">
-        🔍 Зчитати розклад
+    </div>
+
+    <div id="filters-card" class="card hidden">
+      <h3>Фільтри</h3>
+
+      <label for="filter-groups">Групи</label>
+      <select id="filter-groups" class="input multi-select" multiple size="4"></select>
+
+      <label for="filter-subjects">Дисципліни</label>
+      <select id="filter-subjects" class="input multi-select" multiple size="4"></select>
+
+      <button id="btn-apply-filters" class="btn btn-secondary">
+        ✅ Показати заняття
       </button>
-      <button id="btn-find-slots" class="btn btn-secondary" disabled>
+    </div>
+
+    <div id="lessons-card" class="card hidden">
+      <h3>Заняття</h3>
+      <div class="lesson-actions">
+        <button id="btn-check-all" class="btn-inline">Обрати всі</button>
+        <button id="btn-uncheck-all" class="btn-inline">Зняти всі</button>
+      </div>
+      <div id="lessons-list" class="lessons-list"></div>
+      <button id="btn-find-available" class="btn btn-primary">
         🗓️ Знайти вільні пари
       </button>
     </div>
 
-    <div id="slots-result" class="card hidden">
-      <h3>Знайдені вільні пари</h3>
-      <div id="slots-list" class="slots-list"></div>
-    </div>
-  </section>
-
-  <!-- ===== Tab: Report ===== -->
-  <section id="tab-report" class="tab-content">
-    <div class="card">
-      <h3>Генерація звіту</h3>
-      <p class="hint">Оберіть вільні пари на вкладці «Розклад», потім згенеруйте звіт.</p>
-
-      <label for="discipline">Дисципліна</label>
-      <input type="text" id="discipline" class="input" placeholder="Назва дисципліни" />
-
-      <label for="report-format">Формат</label>
-      <select id="report-format" class="input">
-        <option value="xlsx">Excel (.xlsx)</option>
-        <option value="csv">CSV</option>
-        <option value="clipboard">Копіювати в буфер</option>
-      </select>
-
-      <button id="btn-generate" class="btn btn-primary" disabled>
-        📄 Згенерувати звіт
+    <div id="result-card" class="card hidden">
+      <h3>Результат</h3>
+      <textarea id="result-output" class="result-textarea" readonly rows="12"></textarea>
+      <button id="btn-copy-result" class="btn btn-secondary">
+        📋 Копіювати
       </button>
-
-      <div id="report-preview" class="preview hidden"></div>
     </div>
+
+    <div id="status-msg" class="status hidden"></div>
   </section>
 
   <!-- ===== Tab: Settings ===== -->
   <section id="tab-settings" class="tab-content">
     <div class="card">
       <h3>Налаштування</h3>
-
-      <label for="teacher-name">ПІБ викладача</label>
-      <input type="text" id="teacher-name" class="input" placeholder="Іванов І.І." />
-
-      <label for="default-teacher-id">TEACHER_ID за замовчуванням</label>
-      <input type="text" id="default-teacher-id" class="input" placeholder="65" />
-
-      <label for="default-predmet-id">PREDMET_ID за замовчуванням</label>
-      <input type="text" id="default-predmet-id" class="input" placeholder="317" />
-
-      <label for="default-kabinet-id">KABINET_ID за замовчуванням</label>
-      <input type="text" id="default-kabinet-id" class="input" placeholder="42" />
-
-      <label for="subgroup-label">Підгрупа (назва)</label>
-      <input type="text" id="subgroup-label" class="input" placeholder="2 підгрупа" />
-
-      <div class="row-2">
-        <div>
-          <label for="semester-start">Початок семестру</label>
-          <input type="date" id="semester-start" class="input" />
-        </div>
-        <div>
-          <label for="semester-end">Кінець семестру</label>
-          <input type="date" id="semester-end" class="input" />
-        </div>
-      </div>
-
-      <button id="btn-save-config" class="btn btn-primary">💾 Зберегти</button>
-      <button id="btn-clear-cache" class="btn btn-danger">🗑️ Очистити кеш</button>
-
-      <div id="status-msg" class="status hidden"></div>
+      <!-- TODO: settings UI -->
     </div>
   </section>
 

@@ -140,6 +140,88 @@ label {
 }
 .btn-danger:hover:not(:disabled) { background: var(--danger-hover); }
 
+/* ===== Multi-select ===== */
+.multi-select {
+  height: auto;
+  min-height: 60px;
+  max-height: 120px;
+  padding: 4px;
+}
+.multi-select option {
+  padding: 3px 6px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.multi-select option:checked {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* ===== Lesson list ===== */
+.lessons-list {
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+}
+.lesson-item {
+  display: grid;
+  grid-template-columns: 20px 80px 50px 1fr 1fr;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+}
+.lesson-item:last-child { border-bottom: none; }
+.lesson-item:hover { background: #f0f4ff; }
+.lesson-item input[type="checkbox"] { accent-color: var(--primary); }
+.lesson-date { font-weight: 600; font-size: 11px; }
+.lesson-pair { color: var(--text-muted); }
+.lesson-group { font-weight: 500; }
+.lesson-subject { color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: normal; line-height: 1.3; }
+.lesson-topic {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  color: var(--secondary);
+  font-style: italic;
+  line-height: 1.3;
+  padding-left: 26px;
+}
+
+.lesson-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.btn-inline {
+  padding: 4px 10px;
+  font-size: 11px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+.btn-inline:hover { background: var(--border); color: var(--text); }
+
+/* ===== Result textarea ===== */
+.result-textarea {
+  width: 100%;
+  padding: 10px;
+  font-family: 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 11px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+}
+.result-textarea:focus { border-color: var(--primary); }
+
 /* ===== Slots List ===== */
 .slots-list {
   max-height: 200px;

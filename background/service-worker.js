@@ -17,7 +17,6 @@ chrome.runtime.onInstalled.addListener((details) => {
         teacherName: '',
         defaultTeacherId: '',   // TEACHER_ID
         defaultPredmetId: '',   // PREDMET_ID
-        defaultKabinetId: '',   // KABINET_ID
         subgroupLabel: '2 підгрупа',
         semesterStart: '',
         semesterEnd: '',
@@ -76,16 +75,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     case 'GENERATE_REPORT':
     case 'FIND_FREE_SLOTS':
     case 'LOAD_FILTERS':
-      // Forward to active tab's content script
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        if (!tabs[0]?.id) {
-          sendResponse({ error: 'Немає активної вкладки Smart School' });
-          return;
-        }
-        chrome.tabs.sendMessage(tabs[0].id, { action, payload }, (response) => {
-          sendResponse(response);
-        });
-      });
+    case 'FETCH_MONTH_SCHEDULE':
+    case 'GET_CURRENT_USER':
+    case 'FIND_SLOTS_FOR_LESSONS':
+    case 'FETCH_LESSON_DETAILS':
+      // Forward to active tab's content script (with auto-injection fallback)
+      forwardToContentScript(action, payload, sendResponse);
       return true;
 
     /* --- Badge update --- */
@@ -102,6 +97,73 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-/* ---------- Context Menu (optional, future) ---------- */
+/* ---------- Content Script Injection Helper ---------- */
 
-// chrome.contextMenus.create({ ... });
+/**
+ * Forward a message to the content script on the active tab.
+ * If the content script is not injected, inject it first, then retry.
+ */
+function forwardToContentScript(action, payload, sendResponse) {
+  chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+    const tab = tabs[0];
+    if (!tab?.id) {
+      sendResponse({ error: 'Немає активної вкладки' });
+      return;
+    }
+
+    // Check if the tab is on the Smart School site
+    if (!tab.url || !tab.url.includes('admin-saceit.smart-school.com.ua')) {
+      sendResponse({ error: 'Відкрийте сайт Smart School (admin-saceit.smart-school.com.ua)' });
+      return;
+    }
+
+    // Try sending the message
+    try {
+      const response = await sendMessageToTab(tab.id, action, payload);
+      sendResponse(response);
+    } catch (err) {
+      console.log('[Smart School Helper] Content script not found, injecting…');
+      // Inject content scripts programmatically
+      try {
+        await chrome.scripting.executeScript({
+          target: { tabId: tab.id },
+          files: [
+            'utils/config.js',
+            'utils/schedule-parser.js',
+            'utils/schedule-comparator.js',
+            'utils/report-generator.js',
+            'content/content.js',
+          ],
+        });
+        await chrome.scripting.insertCSS({
+          target: { tabId: tab.id },
+          files: ['styles/overlay.css'],
+        });
+        // Wait a tick for the scripts to initialize
+        await new Promise((r) => setTimeout(r, 100));
+        // Retry the message
+        const response = await sendMessageToTab(tab.id, action, payload);
+        sendResponse(response);
+      } catch (injErr) {
+        console.error('[Smart School Helper] Injection failed:', injErr);
+        sendResponse({ error: `Не вдалось завантажити скрипт: ${injErr.message}` });
+      }
+    }
+  });
+}
+
+/**
+ * Send a message to a tab and return a Promise.
+ * Rejects if chrome.runtime.lastError is set (no receiving end).
+ */
+function sendMessageToTab(tabId, action, payload) {
+  return new Promise((resolve, reject) => {
+    chrome.tabs.sendMessage(tabId, { action, payload }, (response) => {
+      if (chrome.runtime.lastError) {
+        reject(new Error(chrome.runtime.lastError.message));
+      } else {
+        resolve(response);
+      }
+    });
+  });
+}

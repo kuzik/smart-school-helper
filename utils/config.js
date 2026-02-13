@@ -27,7 +27,6 @@ const SmartSchoolConfig = (() => {
     KLASS_ID:    'LessonSearch[KLASS_ID][]',   // array — group/class
     PREDMET_ID:  'LessonSearch[PREDMET_ID]',    // subject/discipline
     TEACHER_ID:  'LessonSearch[TEACHER_ID]',    // teacher
-    KABINET_ID:  'LessonSearch[KABINET_ID]',    // room
     DATE_RANGE:  'LessonSearch[date_range]',
     START_DATE:  'LessonSearch[start_date]',
     END_DATE:    'LessonSearch[end_date]',
@@ -147,7 +146,6 @@ const SmartSchoolConfig = (() => {
    * @param {string} [params.klassId]    — group/class ID
    * @param {string} [params.teacherId]  — teacher ID
    * @param {string} [params.predmetId]  — subject/discipline ID
-   * @param {string} [params.kabinetId]  — room/cabinet ID
    * @param {number} [params.lessonNum]  — pair number (1–8)
    * @param {string} [params.startDate]  — YYYY-MM-DD
    * @param {string} [params.endDate]    — YYYY-MM-DD
@@ -168,9 +166,6 @@ const SmartSchoolConfig = (() => {
     }
     if (params.predmetId) {
       url.searchParams.set(SEARCH_PARAMS.PREDMET_ID, params.predmetId);
-    }
-    if (params.kabinetId) {
-      url.searchParams.set(SEARCH_PARAMS.KABINET_ID, params.kabinetId);
     }
     if (params.lessonNum) {
       url.searchParams.set(SEARCH_PARAMS.LESSON_NUM, params.lessonNum);
