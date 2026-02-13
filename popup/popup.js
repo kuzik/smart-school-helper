@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', init);
 
 let fetchedEntries = [];   // all schedule entries for the month
 let filteredLessons = [];  // entries visible in the lesson list
+let lastResults = [];      // results from findAvailableSlots
+let lastTeacherName = '';  // teacher name from fetch
 
 /* ========== Initialization ========== */
 
@@ -58,6 +60,7 @@ function bindEvents() {
   on('btn-uncheck-all', 'click', () => toggleAllLessons(false));
   on('btn-find-available', 'click', findAvailableSlots);
   on('btn-copy-result', 'click', copyResult);
+  on('btn-download-report', 'click', downloadReport);
 
   // Cascading reset: changing an earlier step hides all later steps
   document.getElementById('report-month')?.addEventListener('change', () => {
@@ -103,6 +106,7 @@ function resetFrom(step) {
   }
   if (idx <= 2) {
     // Reset result step
+    lastResults = [];
     const output = document.getElementById('result-output');
     if (output) output.value = '';
   }
@@ -127,6 +131,7 @@ async function fetchMonthSchedule() {
     }
 
     fetchedEntries = result.entries || [];
+    lastTeacherName = result.teacherName || '';
 
     if (fetchedEntries.length === 0) {
       showStatus('Занять за цей місяць не знайдено.', false);
@@ -265,6 +270,9 @@ async function findAvailableSlots() {
       return;
     }
 
+    // Store results for report generation
+    lastResults = result.results || [];
+
     // Show result textarea
     const output = document.getElementById('result-output');
     output.value = result.text || '';
@@ -292,6 +300,158 @@ async function copyResult() {
     document.execCommand('copy');
     showStatus('Скопійовано!', true);
   }
+}
+
+/* ========== 6. Download report (.doc) ========== */
+
+const UA_MONTHS_GEN = {
+  '01': 'січень', '02': 'лютий', '03': 'березень',
+  '04': 'квітень', '05': 'травень', '06': 'червень',
+  '07': 'липень', '08': 'серпень', '09': 'вересень',
+  '10': 'жовтень', '11': 'листопад', '12': 'грудень',
+};
+
+function downloadReport() {
+  if (!lastResults || lastResults.length === 0) {
+    showStatus('Немає даних для звіту.', false);
+    return;
+  }
+
+  const month = getVal('report-month');
+  const year = new Date().getFullYear();
+  const monthName = UA_MONTHS_GEN[month] || month;
+
+  // Group results by subject → group
+  const bySubject = {};
+  for (const r of lastResults) {
+    const subj = r.lesson.subject || 'Невідомо';
+    const grp = r.lesson.group || 'Невідомо';
+    if (!bySubject[subj]) bySubject[subj] = {};
+    if (!bySubject[subj][grp]) bySubject[subj][grp] = [];
+    bySubject[subj][grp].push(r);
+  }
+
+  // Shorten teacher name: "Кузьо Андрій Тарасович" → "Кузьо А.Т."
+  const teacherShort = shortenName(lastTeacherName);
+
+  // Build HTML pages — one per subject+group combination
+  let pages = '';
+  let isFirst = true;
+  for (const [subject, groups] of Object.entries(bySubject)) {
+    for (const [groupName, results] of Object.entries(groups)) {
+      pages += buildGroupPage(subject, groupName, results, monthName, year, teacherShort, isFirst);
+      isFirst = false;
+    }
+  }
+
+  const html = buildDocHtml(pages);
+
+  // Download as .doc
+  const blob = new Blob(['\ufeff' + html], { type: 'application/msword;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `графік_практичних_${monthName}-${year}.doc`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  showStatus('Звіт завантажено!', true);
+}
+
+function shortenName(full) {
+  if (!full) return '';
+  const parts = full.trim().split(/\s+/);
+  if (parts.length >= 3) {
+    return `${parts[0]} ${parts[1][0]}.${parts[2][0]}.`;
+  }
+  if (parts.length === 2) {
+    return `${parts[0]} ${parts[1][0]}.`;
+  }
+  return full;
+}
+
+function formatDateUA(dateStr) {
+  if (!dateStr) return '';
+  const [y, m, d] = dateStr.split('-');
+  return `${d}.${m}.${y}`;
+}
+
+function buildGroupPage(subject, groupName, results, monthName, year, teacher, isFirst) {
+  let rows = '';
+  results.forEach((r, idx) => {
+    const topicLabel = r.lesson.topic || `ПР ${idx + 1}`;
+    const origDate = formatDateUA(r.lesson.date);
+    const origPair = r.lesson.pairNumber;
+    const slotDate = r.slot ? formatDateUA(r.slot.date) : '—';
+    const slotPair = r.slot ? r.slot.pairNumber : '—';
+
+    // Subgroup I → found slot, Subgroup II → original lesson
+    rows += `
+      <tr>
+        <td rowspan="2" style="text-align:center; vertical-align:middle;">${escapeHtml(topicLabel)}</td>
+        <td rowspan="2" style="text-align:center; vertical-align:middle;">${escapeHtml(groupName)}</td>
+        <td style="text-align:center;">І</td>
+        <td style="text-align:center;">${slotDate}</td>
+        <td style="text-align:center;">${slotPair} пара</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;">ІІ</td>
+        <td style="text-align:center;">${origDate}</td>
+        <td style="text-align:center;">${origPair} пара</td>
+      </tr>`;
+  });
+
+  const pageBreak = isFirst ? '' : '<div style="page-break-before:always;"></div>';
+
+  return `
+    ${pageBreak}
+    <p style="text-align:right; margin-bottom:0;">«Затверджую»</p>
+    <p style="text-align:right; margin-bottom:0;">Заступник директора</p>
+    <p style="text-align:right; margin-bottom:24pt;">з навчальної роботи<br/>_______Сарахман М.І</p>
+
+    <p style="text-align:center; font-size:14pt; font-weight:bold; margin-bottom:0;">Графік</p>
+    <p style="text-align:center; font-size:12pt; margin-bottom:0;">проведення практичних робіт</p>
+    <p style="text-align:center; font-size:12pt; margin-bottom:0;">з освітньої компоненти «${escapeHtml(subject)}»</p>
+    <p style="text-align:center; font-size:12pt; margin-bottom:24pt;">за ${escapeHtml(monthName)} ${year} р.</p>
+
+    <table border="1" cellpadding="4" cellspacing="0"
+           style="border-collapse:collapse; width:100%; font-size:12pt;">
+      <thead>
+        <tr style="font-weight:bold;">
+          <th style="width:25%;">№ Практичної роботи</th>
+          <th style="width:15%;">Група</th>
+          <th style="width:15%;">підгрупа</th>
+          <th style="width:22%;">дата</th>
+          <th style="width:23%;">пара</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows}
+      </tbody>
+    </table>
+
+    <p style="margin-top:24pt;">Викладач: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${escapeHtml(teacher)}</p>
+  `;
+}
+
+function buildDocHtml(bodyContent) {
+  return `<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4 portrait; margin: 2cm 1.5cm 2cm 2cm; }
+  body { font-family: 'Times New Roman', serif; font-size: 12pt; }
+  table { border-collapse: collapse; }
+  td, th { border: 1px solid #000; padding: 4pt 6pt; }
+  p { margin: 2pt 0; }
+</style>
+</head>
+<body>
+${bodyContent}
+</body>
+</html>`;
 }
 
 /* ========== Helpers ========== */

@@ -73,9 +73,14 @@
     <div id="result-card" class="card hidden">
       <h3>Результат</h3>
       <textarea id="result-output" class="result-textarea" readonly rows="12"></textarea>
-      <button id="btn-copy-result" class="btn btn-secondary">
-        📋 Копіювати
-      </button>
+      <div class="result-actions">
+        <button id="btn-copy-result" class="btn btn-secondary">
+          📋 Копіювати
+        </button>
+        <button id="btn-download-report" class="btn btn-primary">
+          📄 Завантажити звіт (.doc)
+        </button>
+      </div>
     </div>
 
     <div id="status-msg" class="status hidden"></div>
