@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Smart School Helper",
   "version": "1.0.0",
-  "description": "Автоматизація рутинних завдань на Smart School: порівняння розкладів, пошук вільних пар та генерація звітів для практичних робіт підгруп.",
+  "description": "Автоматизація рутинних завдань на Smart School",
   "permissions": [
     "storage",
     "activeTab",

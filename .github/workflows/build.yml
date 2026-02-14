@@ -20,22 +20,16 @@ jobs:
           VERSION=$(jq -r .version manifest.json)
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Package extension
+      - name: Stage extension files
         run: |
           mkdir -p dist
-          zip -r "dist/smart-school-helper-v${{ steps.version.outputs.version }}.zip" \
-            manifest.json \
-            background/ \
-            content/ \
-            icons/*.png \
-            popup/ \
-            styles/ \
-            utils/ \
-            -x "*.git*" "pages/*"
+          cp -r manifest.json background/ content/ popup/ styles/ utils/ dist/
+          mkdir -p dist/icons
+          cp icons/*.png dist/icons/
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: smart-school-helper-v${{ steps.version.outputs.version }}
-          path: dist/*.zip
+          path: dist/
           retention-days: 90
