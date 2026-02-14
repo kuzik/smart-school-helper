@@ -1,0 +1,41 @@
+name: Build Extension
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read version from manifest
+        id: version
+        run: |
+          VERSION=$(jq -r .version manifest.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Package extension
+        run: |
+          mkdir -p dist
+          zip -r "dist/smart-school-helper-v${{ steps.version.outputs.version }}.zip" \
+            manifest.json \
+            background/ \
+            content/ \
+            icons/*.png \
+            popup/ \
+            styles/ \
+            utils/ \
+            -x "*.git*" "pages/*"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-school-helper-v${{ steps.version.outputs.version }}
+          path: dist/*.zip
+          retention-days: 90
