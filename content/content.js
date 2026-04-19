@@ -547,7 +547,7 @@
    * has anything scheduled.
    */
   async function handleFindSlotsForLessons(payload) {
-    const { lessons } = payload;
+    const { lessons, allTeacherEntries } = payload;
     if (!lessons || lessons.length === 0) {
       return { error: 'Немає обраних занять.' };
     }
@@ -558,6 +558,7 @@
       // Get current user
       const user = extractCurrentUser();
       if (!user.teacherId) {
+        hideOverlayStatus();
         return { error: 'Не вдалося визначити ID викладача.' };
       }
 
@@ -566,107 +567,40 @@
 
       // Determine full date range from the lessons
       const dates = lessons.map((l) => l.date).filter(Boolean).sort();
-      if (dates.length === 0) return { error: 'Немає дат в обраних заняттях.' };
+      if (dates.length === 0) {
+        hideOverlayStatus();
+        return { error: 'Немає дат в обраних заняттях.' };
+      }
 
       const minDate = dates[0];
-      const maxDate = dates[dates.length - 1];
+      // Extend by 7 days so fetched data covers the next-week fallback window
+      const maxDateExtended = (() => {
+        const d = new Date(dates[dates.length - 1]);
+        d.setDate(d.getDate() + 7);
+        return SmartSchoolConfig.formatDate(d);
+      })();
 
-      // Fetch teacher's full schedule for this range (we already have it from entries)
-      // but we need each target group's schedule too
+      // Fetch group list once — used to resolve group name → ID for all groups
+      const filters = await fetchFiltersFromLessonPage();
+
       const groupSchedules = {};
       for (const groupName of uniqueGroups) {
         showOverlayStatus(`Завантаження розкладу групи "${groupName}"…`);
-
-        // We need to find the group ID — search in the fetched page filters
-        const filters = await fetchFiltersFromLessonPage();
         const groupOption = (filters.groups || []).find((g) => g.name === groupName);
-
         if (groupOption) {
-          const schedule = await fetchAndParseSchedule({
+          groupSchedules[groupName] = await fetchAndParseSchedule({
             klassId: groupOption.id,
             dateFrom: minDate,
-            dateTo: maxDate,
+            dateTo: maxDateExtended,
           });
-          groupSchedules[groupName] = schedule;
         }
       }
 
-      // Build teacher's occupied map from the lessons array itself
-      // (we already have all the teacher's lessons for the month)
-      const teacherOccupied = {};
-      for (const entry of lessons) {
-        if (!teacherOccupied[entry.date]) teacherOccupied[entry.date] = new Set();
-        teacherOccupied[entry.date].add(entry.pairNumber);
-      }
-
-      // Virtual schedule: tracks slots already assigned during this search
-      // so we don't double-book the same slot for multiple lessons.
-      // Key per group AND per teacher — a slot is blocked for BOTH.
-      const virtualTeacher = {};  // { date: Set<pair> }
-      const virtualGroup = {};    // { groupName: { date: Set<pair> } }
-
-      // For each selected lesson, find closest free slot on the same week
-      const results = [];
-      for (const lesson of lessons) {
-        const weekDates = getWeekDates(lesson.date);
-        const groupSched = groupSchedules[lesson.group];
-        const groupOccupied = groupSched
-          ? buildOccupiedMap(groupSched.entries)
-          : {};
-
-        // Initialize virtual group map if needed
-        if (!virtualGroup[lesson.group]) virtualGroup[lesson.group] = {};
-
-        let found = null;
-        for (const d of weekDates) {
-          const teacherBusy = teacherOccupied[d] || new Set();
-          const groupBusy = groupOccupied[d] || new Set();
-          const vTeacherBusy = virtualTeacher[d] || new Set();
-          const vGroupBusy = virtualGroup[lesson.group][d] || new Set();
-
-          for (const pair of SmartSchoolConfig.PAIR_TIMES) {
-            if (
-              !teacherBusy.has(pair.number) &&
-              !groupBusy.has(pair.number) &&
-              !vTeacherBusy.has(pair.number) &&
-              !vGroupBusy.has(pair.number)
-            ) {
-              found = {
-                date: d,
-                dayName: SmartSchoolConfig.getDayName(d),
-                pairNumber: pair.number,
-                timeStart: pair.start,
-                timeEnd: pair.end,
-              };
-              break;
-            }
-          }
-          if (found) break;
-        }
-
-        // Reserve the assigned slot in the virtual schedule
-        if (found) {
-          if (!virtualTeacher[found.date]) virtualTeacher[found.date] = new Set();
-          virtualTeacher[found.date].add(found.pairNumber);
-
-          if (!virtualGroup[lesson.group][found.date]) {
-            virtualGroup[lesson.group][found.date] = new Set();
-          }
-          virtualGroup[lesson.group][found.date].add(found.pairNumber);
-        }
-
-        results.push({
-          lesson: {
-            date: lesson.date,
-            dayName: lesson.date ? SmartSchoolConfig.getDayName(lesson.date) : '',
-            pairNumber: lesson.pairNumber,
-            group: lesson.group,
-            subject: lesson.subject,
-            topic: lesson.topic || '',
-          },
-          slot: found,
-        });
-      }
+      const results = new SlotFinder({
+        lessons,
+        teacherEntries: allTeacherEntries || [],
+        groupSchedules,
+      }).findSlots();
 
       hideOverlayStatus();
 
@@ -677,7 +611,7 @@
         const topicStr = l.topic ? ` | ${l.topic}` : '';
         const lessonStr = `${l.date} ${l.pairNumber} пара | ${l.group} | ${l.subject}${topicStr}`;
         const slotStr = s
-          ? `→ ${s.date} (${s.dayName}) ${s.pairNumber} пара (${s.timeStart}–${s.timeEnd})`
+          ? `→ ${s.date} (${s.dayName}) ${s.pairNumber} пара`
           : '→ вільних пар не знайдено';
         return `${lessonStr}\n  ${slotStr}`;
       });
@@ -693,37 +627,6 @@
       SmartSchoolConfig.error('Find slots error:', err);
       return { error: err.message };
     }
-  }
-
-  /**
-   * Get all weekday dates (Mon–Fri) for the week containing the given date.
-   */
-  function getWeekDates(dateStr) {
-    const d = new Date(dateStr);
-    const day = d.getDay(); // 0=Sun, 1=Mon, ...
-    const monday = new Date(d);
-    monday.setDate(d.getDate() - ((day + 6) % 7)); // go back to Monday
-
-    const dates = [];
-    for (let i = 0; i < 5; i++) { // Mon–Fri
-      const curr = new Date(monday);
-      curr.setDate(monday.getDate() + i);
-      dates.push(SmartSchoolConfig.formatDate(curr));
-    }
-    return dates;
-  }
-
-  /**
-   * Build occupied map: { 'YYYY-MM-DD': Set<pairNumber> }
-   */
-  function buildOccupiedMap(entries) {
-    const map = {};
-    for (const entry of entries) {
-      if (!entry.date) continue;
-      if (!map[entry.date]) map[entry.date] = new Set();
-      map[entry.date].add(entry.pairNumber);
-    }
-    return map;
   }
 
   /* ========== Overlay UI ========== */

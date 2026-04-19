@@ -150,10 +150,12 @@ const ReportGenerator = (() => {
   function generateXLSXBlob(headers, rows, title) {
     const xmlRows = [headers, ...rows.map((r) => r.map(String))];
 
-    const cellsXML = xmlRows.map((row) => {
+    const cellsXML = xmlRows.map((row, rowIdx) => {
+      const isHeader = rowIdx === 0;
       const cells = row.map((cell) => {
         const type = typeof cell === 'number' ? 'Number' : 'String';
-        return `<Cell><Data ss:Type="${type}">${escapeXML(String(cell))}</Data></Cell>`;
+        const style = isHeader ? ' ss:StyleID="header"' : '';
+        return `<Cell${style}><Data ss:Type="${type}">${escapeXML(String(cell))}</Data></Cell>`;
       }).join('');
       return `<Row>${cells}</Row>`;
     }).join('\n');

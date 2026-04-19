@@ -84,7 +84,7 @@ const SmartSchoolConfig = (() => {
    * Get the day name in Ukrainian for a given date.
    */
   function getDayName(date) {
-    return DAY_NAMES[new Date(date).getDay()];
+    return DAY_NAMES[new Date(date).getDay()] || '';
   }
 
   /**

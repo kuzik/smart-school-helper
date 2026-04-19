@@ -263,6 +263,7 @@ async function findAvailableSlots() {
 
     const result = await sendMessage('FIND_SLOTS_FOR_LESSONS', {
       lessons: selectedLessons,
+      allTeacherEntries: fetchedEntries,
     });
 
     if (!result || result.error) {
@@ -385,19 +386,19 @@ function buildGroupPage(subject, groupName, results, monthName, year, teacher, i
     const slotDate = r.slot ? formatDateUA(r.slot.date) : '—';
     const slotPair = r.slot ? r.slot.pairNumber : '—';
 
-    // Subgroup I → found slot, Subgroup II → original lesson
+    // Subgroup I → original lesson slot, Subgroup II → found free slot
     rows += `
       <tr>
         <td rowspan="2" style="text-align:center; vertical-align:middle;">${escapeHtml(topicLabel)}</td>
         <td rowspan="2" style="text-align:center; vertical-align:middle;">${escapeHtml(groupName)}</td>
         <td style="text-align:center;">І</td>
-        <td style="text-align:center;">${slotDate}</td>
-        <td style="text-align:center;">${slotPair} пара</td>
+        <td style="text-align:center;">${origDate}</td>
+        <td style="text-align:center;">${origPair} пара</td>
       </tr>
       <tr>
         <td style="text-align:center;">ІІ</td>
-        <td style="text-align:center;">${origDate}</td>
-        <td style="text-align:center;">${origPair} пара</td>
+        <td style="text-align:center;">${slotDate}</td>
+        <td style="text-align:center;">${slotPair} пара</td>
       </tr>`;
   });
 

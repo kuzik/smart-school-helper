@@ -22,6 +22,7 @@
         "utils/schedule-parser.js",
         "utils/schedule-comparator.js",
         "utils/report-generator.js",
+        "utils/slot-finder.js",
         "content/content.js"
       ],
       "css": ["styles/overlay.css"],
