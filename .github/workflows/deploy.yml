@@ -1,0 +1,80 @@
+name: Deploy Extension
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        description: 'Release notes (shown in GitHub release)'
+        required: false
+        default: ''
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Read version from manifest
+        id: version
+        run: |
+          VERSION=$(jq -r .version manifest.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check tag does not already exist
+        run: |
+          if git ls-remote --tags origin "refs/tags/v${{ steps.version.outputs.version }}" | grep -q .; then
+            echo "Tag v${{ steps.version.outputs.version }} already exists. Bump manifest.json version before deploying."
+            exit 1
+          fi
+
+      - name: Build extension
+        run: |
+          mkdir -p dist
+          cp -r manifest.json background/ content/ popup/ styles/ utils/ dist/
+          mkdir -p dist/icons
+          cp icons/*.png dist/icons/
+
+      - name: Package as zip
+        run: |
+          cd dist
+          zip -r ../smart-school-helper-${{ steps.version.outputs.tag }}.zip .
+
+      - name: Upload to Chrome Web Store
+        run: |
+          ./node_modules/.bin/chrome-webstore-upload upload \
+            --source smart-school-helper-${{ steps.version.outputs.tag }}.zip \
+            --extension-id ${{ secrets.EXTENSION_ID }} \
+            --client-id ${{ secrets.CLIENT_ID }} \
+            --client-secret ${{ secrets.CLIENT_SECRET }} \
+            --refresh-token ${{ secrets.REFRESH_TOKEN }}
+
+      - name: Publish on Chrome Web Store
+        run: |
+          ./node_modules/.bin/chrome-webstore-upload publish \
+            --extension-id ${{ secrets.EXTENSION_ID }} \
+            --client-id ${{ secrets.CLIENT_ID }} \
+            --client-secret ${{ secrets.CLIENT_SECRET }} \
+            --refresh-token ${{ secrets.REFRESH_TOKEN }}
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: Smart School Helper ${{ steps.version.outputs.tag }}
+          body: ${{ github.event.inputs.release_notes }}
+          files: smart-school-helper-${{ steps.version.outputs.tag }}.zip
